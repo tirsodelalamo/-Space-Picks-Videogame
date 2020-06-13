@@ -1,5 +1,4 @@
 
-
 const Game = {
     title: 'Geometry Dash',
     description: 'Imposible game!',
@@ -24,7 +23,7 @@ const Game = {
     background : undefined,
     player: undefined,
     obstacles: {
-        squares: undefined,
+        squares: [],
         triangles: undefined,
         picks: undefined
     },
@@ -72,8 +71,10 @@ const Game = {
     },
 
     createObstacles(){
-
-        this.obstacles.squares = new Square (this.ctx, this.canvasSize, this.basePosition, this.refDimensions)
+        
+        arrSquareObstacles.forEach(elem => {
+            this.obstacles.squares.push(new Square (this.ctx, this.canvasSize, this.basePosition, this.refDimensions, elem.posX, elem.posY))
+        })
         this.obstacles.triangles = new Triangle (this.ctx, this.canvasSize, this.basePosition, this.refDimensions)
         this.obstacles.picks = new Picks (this.ctx, this.canvasSize, this.basePosition, this.refDimensions)
 
@@ -82,7 +83,7 @@ const Game = {
     draw(){
         this.player.drawPlayer()
         this.background.drawGround()
-        this.obstacles.squares.drawSquares()
+        this.obstacles.squares.forEach(elem => elem.drawSquares())
         this.obstacles.triangles.drawTriangles()
         this.obstacles.picks.drawPicks()
     },
@@ -96,4 +97,6 @@ const Game = {
         audio.loop = false
         audio.play()
     }
+
+
 }

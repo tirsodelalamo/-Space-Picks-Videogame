@@ -1,13 +1,15 @@
 class Obstacles {
 
-    constructor (ctx, canvasSize, basePosition, refDimensions){
+    constructor (ctx, canvasSize, basePosition, refDimensions, posX, posY){
 
         this.ctx = ctx,
         this.canvasSize = canvasSize,
         this.basePosition = basePosition,
-        this.refDimensions = refDimensions
-
-
+        this.refDimensions = refDimensions,
+        this.obstaclesPosition = {
+            posX: posX,
+            posY: posY
+        }
     }
 
 
@@ -18,20 +20,16 @@ class Obstacles {
 
 class Square extends Obstacles {
 
-    constructor(ctx, canvasSize, basePosition, refDimensions){
+    constructor(ctx, canvasSize, basePosition, refDimensions, posX, posY){
 
-        super(ctx, canvasSize, basePosition, refDimensions)
+        super(ctx, canvasSize, basePosition, refDimensions, posX, posY)
 
     }
 
     drawSquares(){
  
         this.ctx.fillStyle = 'blue'
-        arrSquareObstacles.forEach(elem => 
-
-            this.ctx.fillRect(elem.posX, elem.posY, this.refDimensions, this.refDimensions)
-
-            )
+        this.ctx.fillRect(this.obstaclesPosition.posX, this.obstaclesPosition.posY, this.refDimensions, this.refDimensions)
         
     }
 
