@@ -13,6 +13,10 @@ const Game = {
     keySPACE: 32,
     basePosition: 50,
     refDimensions: 25,
+    velX: 2.5,
+    fps: 60,
+
+
 
 
     background : undefined,
@@ -25,6 +29,16 @@ const Game = {
         this.setDimensions()
         this.createBackground()
         this.createPlayer()
+        this.start()
+   
+    },
+
+    start() {
+        setInterval(() =>{
+            this.clearScreen()
+            this.draw()
+
+        },1000 / this.fps)
     },
     
     setDimensions(){
@@ -37,12 +51,27 @@ const Game = {
     
     createBackground() {
         this.background = new Background(this.ctx, this.canvasSize, this.basePosition)
-        this.background.drawGround()
+
     },
     
     createPlayer(){
-        this.player = new Player(this.ctx, this.canvasSize, this.basePosition, this.refDimensions, this.keySPACE)
+        
+        this.player = new Player(this.ctx, this.canvasSize, this.basePosition, this.refDimensions, this.keySPACE, this.velX)
+
+    },
+
+    draw(){
         this.player.drawPlayer()
-        this.player.setListeners()
+        this.background.drawGround()
+    },
+
+    clearScreen() {
+        this.ctx.clearRect(0 ,0 , this.canvasSize.w, this.canvasSize.h)
     }
+
+    // playSound(){
+    //     const audio = new Audio(src="/sound/levelSoundCutted.mp3")
+    //     audio.loop = false
+    //     audio.play()
+    // }
 }
