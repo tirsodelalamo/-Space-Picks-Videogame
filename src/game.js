@@ -1,3 +1,5 @@
+
+
 const Game = {
     title: 'Geometry Dash',
     description: 'Imposible game!',
@@ -16,11 +18,17 @@ const Game = {
     velX: 2.5,
     fps: 60,
 
-
+    music: new Audio('sound/levelSoundCutted.mp3'),
 
 
     background : undefined,
     player: undefined,
+    obstacles: {
+        squares: undefined,
+        triangles: undefined,
+        picks: undefined
+    },
+
 
 
     init(id){
@@ -29,11 +37,13 @@ const Game = {
         this.setDimensions()
         this.createBackground()
         this.createPlayer()
+        this.createObstacles()
         this.start()
    
     },
 
     start() {
+        this.music.play()
         setInterval(() =>{
             this.clearScreen()
             this.draw()
@@ -60,9 +70,18 @@ const Game = {
 
     },
 
+    createObstacles(){
+
+        this.obstacles.squares = new Square (this.ctx, this.canvasSize, this.basePosition, this.refDimensions)
+        this.obstacles.triangles = new Triangle (this.ctx, this.canvasSize, this.basePosition, this.refDimensions)
+
+    },
+
     draw(){
         this.player.drawPlayer()
         this.background.drawGround()
+        this.obstacles.squares.drawSquares()
+        this.obstacles.triangles.drawTriangles()
     },
 
     clearScreen() {

@@ -11,7 +11,8 @@ class Player {
         this.playerPosition = { x : this.refDimensions*4 , y : this.canvasSize.h - this.basePosition - this.refDimensions},
         this.velY = 0,
         this.jumpVel = -6,
-        this.gravity = 0.3
+        this.gravity = 0.25,
+        this.absolutePlayerPosition = canvasSize.h - basePosition - refDimensions
 
     }
 
@@ -28,7 +29,7 @@ class Player {
         //     jump()
         // }
         if(e.keyCode === this.keySPACE){
-            if (this.canvasSize.h - this.basePosition - this.refDimensions == this.playerPosition.y){
+            if ( this.absolutePlayerPosition == this.playerPosition.y){
             this.jump()
             }
         }
