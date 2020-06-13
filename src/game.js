@@ -44,6 +44,7 @@ const Game = {
 
     start() {
         this.music.play()
+        this.music.volume = 0.2
         setInterval(() =>{
             this.clearScreen()
             this.draw()
@@ -54,7 +55,7 @@ const Game = {
     setDimensions(){
         
         this.canvasSize.w = window.innerWidth * 4
-        this.canvasSize.h = window.innerHeight / 1.3
+        this.canvasSize.h = 650
         this.canvasDom.setAttribute('width', this.canvasSize.w)
         this.canvasDom.setAttribute('height', this.canvasSize.h)
     },
@@ -88,11 +89,11 @@ const Game = {
 
     clearScreen() {
         this.ctx.clearRect(0 ,0 , this.canvasSize.w, this.canvasSize.h)
-    }
+    },
 
-    // playSound(){
-    //     const audio = new Audio(src="/sound/levelSoundCutted.mp3")
-    //     audio.loop = false
-    //     audio.play()
-    // }
+    playSound(){
+        const audio = new Audio(src="/sound/levelSoundCutted.mp3")
+        audio.loop = false
+        audio.play()
+    }
 }

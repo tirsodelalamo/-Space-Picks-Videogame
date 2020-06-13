@@ -7,8 +7,8 @@ let arrSquareObstacles = [{posX: 500, posY: 200}]
 
 
 // ----------------------------------------------------TRIANGLES-----------------------------------------------------------
-
-let arrTriangleObstacles = [{posX: 300, posY: 200}]
+// heightMAX : 650 
+let arrTriangleObstacles = [{posX: 400, posY:  650 - 50}]
 
 
 
