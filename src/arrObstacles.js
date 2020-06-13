@@ -1,6 +1,7 @@
+const maxHeight = 650
 //-----------------------------------------------------SQUARES-------------------------------------------------------------
 
-let arrSquareObstacles = [{posX: 500, posY: 200}]
+let arrSquareObstacles = [{posX: 500, posY: 200}, {posX: 600, posY: 200}, {posX: 400, posY:  650-100 }]
 
 
 
@@ -8,12 +9,12 @@ let arrSquareObstacles = [{posX: 500, posY: 200}]
 
 // ----------------------------------------------------TRIANGLES-----------------------------------------------------------
 // heightMAX : 650 
-let arrTriangleObstacles = [{posX: 400, posY:  650 - 50}]
+let arrTriangleObstacles = [{posX: 400, posY:  650 - 50}, {posX: 500, posY:  650 - 50}, {posX: 100, posY:  650 - 50}]
 
 
 
 
 //-------------------------------------------------------PICKS--------------------------------------------------------------
 
-let arrPicksObstacles = [{posX: 100, posY: 100}]
+let arrPicksObstacles = [{posX: 100, posY: 100}, , {posX: 600, posY: 100}]
 

@@ -24,8 +24,8 @@ const Game = {
     player: undefined,
     obstacles: {
         squares: [],
-        triangles: undefined,
-        picks: undefined
+        triangles: [],
+        picks: []
     },
 
 
@@ -71,21 +71,28 @@ const Game = {
     },
 
     createObstacles(){
-        
+
         arrSquareObstacles.forEach(elem => {
             this.obstacles.squares.push(new Square (this.ctx, this.canvasSize, this.basePosition, this.refDimensions, elem.posX, elem.posY))
         })
-        this.obstacles.triangles = new Triangle (this.ctx, this.canvasSize, this.basePosition, this.refDimensions)
-        this.obstacles.picks = new Picks (this.ctx, this.canvasSize, this.basePosition, this.refDimensions)
+        arrTriangleObstacles.forEach(elem => {
+            this.obstacles.triangles.push(new Triangle (this.ctx, this.canvasSize, this.basePosition, this.refDimensions, elem.posX, elem.posY))
+        })
+        arrPicksObstacles.forEach(elem => {
+            this.obstacles.picks.push(new Picks (this.ctx, this.canvasSize, this.basePosition, this.refDimensions, elem.posX, elem.posY))
+        })
 
     },
 
     draw(){
-        this.player.drawPlayer()
+
+        this.background.drawBackground()
         this.background.drawGround()
+        this.player.drawPlayer()
         this.obstacles.squares.forEach(elem => elem.drawSquares())
-        this.obstacles.triangles.drawTriangles()
-        this.obstacles.picks.drawPicks()
+        this.obstacles.triangles.forEach(elem => elem.drawTriangles()) 
+        this.obstacles.picks.forEach(elem => elem.drawPicks()) 
+
     },
 
     clearScreen() {
