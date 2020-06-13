@@ -10,13 +10,6 @@ class Obstacles {
 
     }
 
-    // drawObstacles (){
-
-    //     this.drawSquares()
-    //     this.drawTriangles()
-    //     // drawTriangles()
-    //     // drawPicks()
-    // }
 
 
 }
@@ -58,12 +51,13 @@ class Triangle extends Obstacles {
 
         arrTriangleObstacles.forEach(elem => {
             this.ctx.fillStyle = 'yellow' 
+
             this.ctx.beginPath();
 
             this.ctx.moveTo(elem.posX, elem.posY);
-            this.ctx.lineTo(elem.posX + this.refDimensions/2, elem.posY + 21,65);
-            this.ctx.lineTo(elem.posX + this.refDimensions, elem.posY + this.refDimensions);
-        
+            this.ctx.lineTo(elem.posX + this.refDimensions, elem.posY);
+            this.ctx.lineTo(elem.posX + this.refDimensions/2 , elem.posY - this.refDimensions);
+            this.ctx.fill()
 
             this.ctx.closePath();
 
@@ -72,9 +66,32 @@ class Triangle extends Obstacles {
     }
 
 
-
 }
 
+
+
+class Picks extends Obstacles {
+
+    constructor(ctx, canvasSize, basePosition, refDimensions){
+
+        super(ctx, canvasSize, basePosition, refDimensions)
+
+    }
+
+    drawPicks(){
+ 
+        this.ctx.fillStyle = 'pink'
+        arrPicksObstacles.forEach(elem => 
+
+            this.ctx.fillRect(elem.posX, elem.posY, this.refDimensions * 2, this.refDimensions / 2)
+
+            )
+        
+    }
+
+
+
+}
 
 
 

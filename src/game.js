@@ -74,6 +74,7 @@ const Game = {
 
         this.obstacles.squares = new Square (this.ctx, this.canvasSize, this.basePosition, this.refDimensions)
         this.obstacles.triangles = new Triangle (this.ctx, this.canvasSize, this.basePosition, this.refDimensions)
+        this.obstacles.picks = new Picks (this.ctx, this.canvasSize, this.basePosition, this.refDimensions)
 
     },
 
@@ -82,6 +83,7 @@ const Game = {
         this.background.drawGround()
         this.obstacles.squares.drawSquares()
         this.obstacles.triangles.drawTriangles()
+        this.obstacles.picks.drawPicks()
     },
 
     clearScreen() {

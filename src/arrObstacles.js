@@ -10,3 +10,10 @@ let arrSquareObstacles = [{posX: 500, posY: 200}]
 
 let arrTriangleObstacles = [{posX: 300, posY: 200}]
 
+
+
+
+//-------------------------------------------------------PICKS--------------------------------------------------------------
+
+let arrPicksObstacles = [{posX: 100, posY: 100}]
+
