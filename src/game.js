@@ -55,7 +55,7 @@ const Game = {
     setDimensions(){
         
         this.canvasSize.w = window.innerWidth * 4
-        this.canvasSize.h = 650
+        this.canvasSize.h = 300
         this.canvasDom.setAttribute('width', this.canvasSize.w)
         this.canvasDom.setAttribute('height', this.canvasSize.h)
     },
@@ -109,9 +109,22 @@ const Game = {
     },
 
     detectColisions(){
-        this.obstacles.squares.forEach(square => {
-            this.detectModifyColisionSquares(square)
-        })
+        //VAMOS A COMPROBAR SI ALGUN ELEMENTO ESTA COLISIONANDO
+        //PARA ELLO VAMOS A USAR EN VEZ DE FOREACH, SOME
+        //NUESTRO detectModifyColisionSquares DEVOLVERA AHORA TRUE/FALSE
+        //SI ALGUNO DEVUELVE, SOME DEVOLVERA TRUE
+        if(this.isGroundColliding()){
+            this.player.absolutePlayerPosition = this.canvasSize.h - this.basePosition
+            this.player.playerPosition.y = this.player.absolutePlayerPosition
+            this.player.isJumping = false
+        }
+
+        if(this.obstacles.squares.some(square => this.isSquareColliding(square))){
+            this.player.isColliding = true
+            this.player.isJumping = false
+        } else {
+            this.player.isColliding = false
+        }
         // this.detectColisionSquares()
         // this.detectModifyColisionSquares()
     },
@@ -129,7 +142,13 @@ const Game = {
     //     }
     //   }
 
-    detectModifyColisionSquares(square) {
+    isGroundColliding(){
+        if (this.player.playerPosition.y >= this.canvasSize.h - this.basePosition){
+            return true
+        }
+    },
+
+    isSquareColliding(square) {
        //console.log(`square ${ square.obstaclesPosition.posY} --- player ${this.player.playerPosition.y}`)
         if(this.player.playerPosition.x >= square.obstaclesPosition.posX &&
             this.player.playerPosition.x <= square.obstaclesPosition.posX + this.refDimensions){   
@@ -151,10 +170,9 @@ const Game = {
             // console.log(`new player position ${square.obstaclesPosition.posY - this.refDimensions}`)
             this.player.playerPosition.y =  square.obstaclesPosition.posY - this.refDimensions
             this.player.absolutePlayerPosition = square.obstaclesPosition.posY - this.refDimensions
-            this.player.isColliding = true
-        } 
-        else {
-            this.player.isColliding = false
+            return true
+        } else {
+            return false
         }
     },
 

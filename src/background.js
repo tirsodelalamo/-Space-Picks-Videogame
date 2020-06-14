@@ -29,8 +29,8 @@ class Background {
 
     drawBackground() {
 
-        this.ctx.drawImage(this.backgroundImage, this.position.x , this.position.y , this.canvasSize.w/6, this.canvasSize.h)
-        this.ctx.drawImage(this.backgroundImage, this.position.x + this.canvasSize.w/6,this.position.y, this.canvasSize.w/6 , this.canvasSize.h)
+        this.ctx.drawImage(this.backgroundImage, this.position.x , this.position.y , this.canvasSize.w/12, this.canvasSize.h)
+        this.ctx.drawImage(this.backgroundImage, this.position.x + this.canvasSize.w/12,this.position.y, this.canvasSize.w/12 , this.canvasSize.h)
         this.moveBackground()
 
     }

@@ -8,6 +8,7 @@ class Player {
         this.velX = velX
         this.keySPACE = keySPACE,
         this.isColliding = false,
+        this.isJumping = false,
 
         this.playerPosition = { x : this.refDimensions*4 , y : this.canvasSize.h - this.basePosition},
         this.velY = 0,
@@ -26,10 +27,10 @@ class Player {
 
     setListeners(){
         document.addEventListener("keydown", e =>{
-
             if(e.keyCode === this.keySPACE){
+                console.log(`Absolute Position: ${this.absolutePlayerPosition}, Player Position ${this.playerPosition.y}`)
                 if ( this.absolutePlayerPosition == this.playerPosition.y){
-                this.jump()
+                    this.jump()
                 // console.log(`X: ${this.playerPosition.x} -- y: ${this.playerPosition.y}`) // ----------------------------------
                 }
             }
@@ -40,11 +41,8 @@ class Player {
 
         this.playerPosition.x += this.velX
         this.velY+=this.gravity
-        if (this.playerPosition.y >= this.canvasSize.h - this.basePosition){
-            this.absolutePlayerPosition = this.canvasSize.h - this.basePosition
-            this.playerPosition.y = this.absolutePlayerPosition
-        }
-        if (this.playerPosition.y >= this.canvasSize.h - this.basePosition || this.isColliding){
+                
+        if (!this.isJumping && (this.playerPosition.y >= this.canvasSize.h - this.basePosition || this.isColliding)){
             this.velY = 0
         }
         else{
@@ -54,7 +52,8 @@ class Player {
     }
 
     jump(){
-
+        console.log("Jumping")
+        this.isJumping = true
         this.velY = this.jumpVel
         this.playerPosition.y += this.velY
 
