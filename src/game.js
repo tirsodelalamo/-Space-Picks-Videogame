@@ -14,7 +14,7 @@ const Game = {
     keySPACE: 32,
     basePosition: 50,
     refDimensions: 25,
-    velX: 2.5,
+    velX: 2,
     fps: 60,
 
     music: new Audio('sound/levelSoundCutted.mp3'),
@@ -43,10 +43,11 @@ const Game = {
 
     start() {
         this.music.play()
-        this.music.volume = 0.2
+        this.music.volume = 0.1
         setInterval(() =>{
             this.clearScreen()
             this.draw()
+            this.detectColisions()
 
         },1000 / this.fps)
     },
@@ -68,12 +69,14 @@ const Game = {
         
         this.player = new Player(this.ctx, this.canvasSize, this.basePosition, this.refDimensions, this.keySPACE, this.velX)
 
+       console.log(`pos x ${this.player.playerPosition.x} pos y ${this.player.playerPosition.y}`)
+
     },
 
     createObstacles(){
 
         arrSquareObstacles.forEach(elem => {
-            this.obstacles.squares.push(new Square (this.ctx, this.canvasSize, this.basePosition, this.refDimensions, elem.posX, elem.posY))
+            this.obstacles.squares.push(new Square (this.ctx, this.canvasSize, this.basePosition, this.refDimensions, elem.posX , elem.posY))
         })
         arrTriangleObstacles.forEach(elem => {
             this.obstacles.triangles.push(new Triangle (this.ctx, this.canvasSize, this.basePosition, this.refDimensions, elem.posX, elem.posY))
@@ -103,7 +106,60 @@ const Game = {
         const audio = new Audio(src="/sound/levelSoundCutted.mp3")
         audio.loop = false
         audio.play()
-    }
+    },
 
+    detectColisions(){
+        this.obstacles.squares.forEach(square => {
+            this.detectModifyColisionSquares(square)
+        })
+        // this.detectColisionSquares()
+        // this.detectModifyColisionSquares()
+    },
+
+    // detectDestroyColisionSquares(square) {
+
+    //     if(this.player.posX < obs.posX + obs.obsW && 
+    //         this.car.posX + this.car.carW > obs.posX 
+    //         && this.car.posY < obs.posY + obs.obsH 
+    //         && this.car.carH + this.car.posY > obs.posY) {
+    //       return true
+    //     } 
+    //     else {
+    //       return false
+    //     }
+    //   }
+
+    detectModifyColisionSquares(square) {
+       //console.log(`square ${ square.obstaclesPosition.posY} --- player ${this.player.playerPosition.y}`)
+        if(this.player.playerPosition.x >= square.obstaclesPosition.posX &&
+            this.player.playerPosition.x <= square.obstaclesPosition.posX + this.refDimensions){   
+            // console.log(`pos y player  ${this.player.playerPosition.y} pos y ${square.obstaclesPosition.posY - this.refDimensions}`)
+        }
+       // ESTOY EN EL EJE Y CORRECTO
+        if (this.player.playerPosition.y <= square.obstaclesPosition.posY - this.refDimensions + 7 &&
+            this.player.playerPosition.y >= square.obstaclesPosition.posY - this.refDimensions -7  &&
+            
+            //MI VERTICE ABAJO/IZQ ESTA TOCANDO EL CUADRADO
+            ((this.player.playerPosition.x >= square.obstaclesPosition.posX &&
+                this.player.playerPosition.x <= square.obstaclesPosition.posX + this.refDimensions)
+            ||
+            //MI VERTICE ABAJO/DER ESTA TOCANDO EL CUADRADO
+            (this.player.playerPosition.x + this.refDimensions >= square.obstaclesPosition.posX &&
+            this.player.playerPosition.x + this.refDimensions <= square.obstaclesPosition.posX + this.refDimensions)
+            )) {
+            // console.log('entro')
+            // console.log(`new player position ${square.obstaclesPosition.posY - this.refDimensions}`)
+            this.player.playerPosition.y =  square.obstaclesPosition.posY - this.refDimensions
+            this.player.absolutePlayerPosition = square.obstaclesPosition.posY - this.refDimensions
+            this.player.isColliding = true
+        } 
+        else {
+            this.player.isColliding = false
+        }
+    },
+
+    gameOver() {
+
+    }
 
 }

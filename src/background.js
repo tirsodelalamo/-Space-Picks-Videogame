@@ -36,7 +36,7 @@ class Background {
     }
 
     moveBackground() {
-        if(this.position.x <= -this.canvasSize.w){
+        if(this.position.x <= -this.canvasSize.w / 6){
             this.position.x = 0;
         }
         this.position.x -= this.vel.background

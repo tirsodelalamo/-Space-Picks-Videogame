@@ -8,7 +8,6 @@ window.onload = () => {
         div.style.display = 'none'
         canvas.style.display = 'block'
         Game.init('geometrydash')
-
      }
     }
     )
