@@ -47,7 +47,7 @@ const Game = {
         setInterval(() =>{
             this.clearScreen()
             this.draw()
-            this.detectColisions()
+            this.detectCollisions()
 
         },1000 / this.fps)
     },
@@ -108,47 +108,47 @@ const Game = {
         audio.play()
     },
 
-    detectColisions(){
+
+//---------------------------------------COLLISIONS---------------------------------------------------------------------------------
+
+
+    detectCollisions(){
         //VAMOS A COMPROBAR SI ALGUN ELEMENTO ESTA COLISIONANDO
         //PARA ELLO VAMOS A USAR EN VEZ DE FOREACH, SOME
         //NUESTRO detectModifyColisionSquares DEVOLVERA AHORA TRUE/FALSE
         //SI ALGUNO DEVUELVE, SOME DEVOLVERA TRUE
+
+    //----------------------------ground collisions---------------------------------
         if(this.isGroundColliding()){
             this.player.currentBasePosition = this.canvasSize.h - this.groundHeight
             this.player.playerPosition.y = this.player.currentBasePosition
             this.player.isJumping = false
         }
-
-        if(this.obstacles.squares.some(square => this.isSquareColliding(square))){
+    //----------------------------positive square collisions-----------------
+        if(this.obstacles.squares.some(square => this.isSquarePositiveColliding(square))){
             this.player.isColliding = true
             this.player.isJumping = false
         } else {
             this.player.isColliding = false
         }
-        // this.detectColisionSquares()
-        // this.detectModifyColisionSquares()
+    //----------------------------negative square collisions-----------------
+    //----------------------------triangle collisions------------------------
+    //----------------------------pikes collisions---------------------------
+
     },
 
-    // detectDestroyColisionSquares(square) {
-
-    //     if(this.player.posX < obs.posX + obs.obsW && 
-    //         this.car.posX + this.car.carW > obs.posX 
-    //         && this.car.posY < obs.posY + obs.obsH 
-    //         && this.car.carH + this.car.posY > obs.posY) {
-    //       return true
-    //     } 
-    //     else {
-    //       return false
-    //     }
-    //   }
 
     isGroundColliding(){
         if (this.player.playerPosition.y >= this.canvasSize.h - this.groundHeight){
             return true
+
+        } else {
+            return false
         }
     },
 
-    isSquareColliding(square) {
+
+    isSquarePositiveColliding(square) {
        // ESTOY EN EL EJE Y CORRECTO
         if (this.player.playerPosition.y <= square.obstaclesPosition.posY - this.refDimensions + 5 &&
             this.player.playerPosition.y >= square.obstaclesPosition.posY - this.refDimensions - 5 &&
@@ -161,11 +161,11 @@ const Game = {
             (this.player.playerPosition.x + this.refDimensions >= square.obstaclesPosition.posX &&
             this.player.playerPosition.x + this.refDimensions <= square.obstaclesPosition.posX + this.refDimensions)
             )) {
-            // console.log('entro')
-            // console.log(`new player position ${square.obstaclesPosition.posY - this.refDimensions}`)
+
             this.player.playerPosition.y =  square.obstaclesPosition.posY - this.refDimensions
             this.player.currentBasePosition = square.obstaclesPosition.posY - this.refDimensions
             return true
+
         } else {
             return false
         }
