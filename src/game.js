@@ -12,7 +12,7 @@ const Game = {
         h: undefined
     },
     keySPACE: 32,
-    basePosition: 50,
+    groundHeight: 50,
     refDimensions: 25,
     velX: 2,
     fps: 60,
@@ -61,13 +61,13 @@ const Game = {
     },
     
     createBackground() {
-        this.background = new Background(this.ctx, this.canvasSize, this.basePosition)
+        this.background = new Background(this.ctx, this.canvasSize, this.groundHeight)
 
     },
     
     createPlayer(){
         
-        this.player = new Player(this.ctx, this.canvasSize, this.basePosition, this.refDimensions, this.keySPACE, this.velX)
+        this.player = new Player(this.ctx, this.canvasSize, this.groundHeight, this.refDimensions, this.keySPACE, this.velX)
 
        console.log(`pos x ${this.player.playerPosition.x} pos y ${this.player.playerPosition.y}`)
 
@@ -76,13 +76,13 @@ const Game = {
     createObstacles(){
 
         arrSquareObstacles.forEach(elem => {
-            this.obstacles.squares.push(new Square (this.ctx, this.canvasSize, this.basePosition, this.refDimensions, elem.posX , elem.posY))
+            this.obstacles.squares.push(new Square (this.ctx, this.canvasSize, this.groundHeight, this.refDimensions, elem.posX , elem.posY))
         })
         arrTriangleObstacles.forEach(elem => {
-            this.obstacles.triangles.push(new Triangle (this.ctx, this.canvasSize, this.basePosition, this.refDimensions, elem.posX, elem.posY))
+            this.obstacles.triangles.push(new Triangle (this.ctx, this.canvasSize, this.groundHeight, this.refDimensions, elem.posX, elem.posY))
         })
         arrPicksObstacles.forEach(elem => {
-            this.obstacles.picks.push(new Picks (this.ctx, this.canvasSize, this.basePosition, this.refDimensions, elem.posX, elem.posY))
+            this.obstacles.picks.push(new Picks (this.ctx, this.canvasSize, this.groundHeight, this.refDimensions, elem.posX, elem.posY))
         })
 
     },
@@ -114,8 +114,8 @@ const Game = {
         //NUESTRO detectModifyColisionSquares DEVOLVERA AHORA TRUE/FALSE
         //SI ALGUNO DEVUELVE, SOME DEVOLVERA TRUE
         if(this.isGroundColliding()){
-            this.player.absolutePlayerPosition = this.canvasSize.h - this.basePosition
-            this.player.playerPosition.y = this.player.absolutePlayerPosition
+            this.player.currentBasePosition = this.canvasSize.h - this.groundHeight
+            this.player.playerPosition.y = this.player.currentBasePosition
             this.player.isJumping = false
         }
 
@@ -143,20 +143,15 @@ const Game = {
     //   }
 
     isGroundColliding(){
-        if (this.player.playerPosition.y >= this.canvasSize.h - this.basePosition){
+        if (this.player.playerPosition.y >= this.canvasSize.h - this.groundHeight){
             return true
         }
     },
 
     isSquareColliding(square) {
-       //console.log(`square ${ square.obstaclesPosition.posY} --- player ${this.player.playerPosition.y}`)
-        if(this.player.playerPosition.x >= square.obstaclesPosition.posX &&
-            this.player.playerPosition.x <= square.obstaclesPosition.posX + this.refDimensions){   
-            // console.log(`pos y player  ${this.player.playerPosition.y} pos y ${square.obstaclesPosition.posY - this.refDimensions}`)
-        }
        // ESTOY EN EL EJE Y CORRECTO
-        if (this.player.playerPosition.y <= square.obstaclesPosition.posY - this.refDimensions + 7 &&
-            this.player.playerPosition.y >= square.obstaclesPosition.posY - this.refDimensions -7  &&
+        if (this.player.playerPosition.y <= square.obstaclesPosition.posY - this.refDimensions + 5 &&
+            this.player.playerPosition.y >= square.obstaclesPosition.posY - this.refDimensions - 5 &&
             
             //MI VERTICE ABAJO/IZQ ESTA TOCANDO EL CUADRADO
             ((this.player.playerPosition.x >= square.obstaclesPosition.posX &&
@@ -169,7 +164,7 @@ const Game = {
             // console.log('entro')
             // console.log(`new player position ${square.obstaclesPosition.posY - this.refDimensions}`)
             this.player.playerPosition.y =  square.obstaclesPosition.posY - this.refDimensions
-            this.player.absolutePlayerPosition = square.obstaclesPosition.posY - this.refDimensions
+            this.player.currentBasePosition = square.obstaclesPosition.posY - this.refDimensions
             return true
         } else {
             return false

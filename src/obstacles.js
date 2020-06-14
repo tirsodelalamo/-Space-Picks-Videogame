@@ -1,10 +1,10 @@
 class Obstacles {
 
-    constructor (ctx, canvasSize, basePosition, refDimensions, posX, posY){
+    constructor (ctx, canvasSize, groundHeight, refDimensions, posX, posY){
 
         this.ctx = ctx,
         this.canvasSize = canvasSize,
-        this.basePosition = basePosition,
+        this.groundHeight = groundHeight,
         this.refDimensions = refDimensions,
         this.obstaclesPosition = {
             posX: posX,
@@ -20,9 +20,9 @@ class Obstacles {
 
 class Square extends Obstacles {
 
-    constructor(ctx, canvasSize, basePosition, refDimensions, posX, posY){
+    constructor(ctx, canvasSize, groundHeight, refDimensions, posX, posY){
 
-        super(ctx, canvasSize, basePosition, refDimensions, posX, posY)
+        super(ctx, canvasSize, groundHeight, refDimensions, posX, posY)
 
     }
 
@@ -39,9 +39,9 @@ class Square extends Obstacles {
 
 class Triangle extends Obstacles {
 
-    constructor (ctx, canvasSize, basePosition, refDimensions, posX, posY){
+    constructor (ctx, canvasSize, groundHeight, refDimensions, posX, posY){
 
-        super(ctx, canvasSize, basePosition, refDimensions, posX, posY)
+        super(ctx, canvasSize, groundHeight, refDimensions, posX, posY)
 
     }
 
@@ -66,9 +66,9 @@ class Triangle extends Obstacles {
 
 class Picks extends Obstacles {
 
-    constructor(ctx, canvasSize, basePosition, refDimensions, posX, posY){
+    constructor(ctx, canvasSize, groundHeight, refDimensions, posX, posY){
 
-        super(ctx, canvasSize, basePosition, refDimensions, posX, posY)
+        super(ctx, canvasSize, groundHeight, refDimensions, posX, posY)
 
     }
 

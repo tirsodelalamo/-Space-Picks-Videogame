@@ -1,6 +1,6 @@
 class Background {
 
-    constructor(ctx, canvasSize, basePosition){
+    constructor(ctx, canvasSize, groundHeight){
 
         this.ctx = ctx,
         this.canvasSize = canvasSize
@@ -17,7 +17,7 @@ class Background {
             background: 0.3,
         },
         
-        this.basePosition = basePosition,
+        this.groundHeight = groundHeight,
 
         this.position = {
             x : 0,
@@ -45,7 +45,7 @@ class Background {
     drawGround(){
         
         this.ctx.fillStyle = 'black'
-        this.ctx.fillRect(0, this.canvasSize.h - this.basePosition, this.canvasSize.w, this.basePosition)
+        this.ctx.fillRect(0, this.canvasSize.h - this.groundHeight, this.canvasSize.w, this.groundHeight)
         
     }
 
