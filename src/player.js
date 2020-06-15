@@ -31,7 +31,7 @@ class Player {
                 // console.log(`Absolute Position: ${this.currentBasePosition}, Player Position ${this.playerPosition.y}`)
                 if ( this.currentBasePosition == this.playerPosition.y){
                     this.jump()
-                // console.log(`X: ${this.playerPosition.x} -- y: ${this.playerPosition.y}`) // ----------------------------------
+                    console.log(`X: ${this.playerPosition.x} -- y: ${this.playerPosition.y}`) // ----------------------------------
                 }
             }
         })

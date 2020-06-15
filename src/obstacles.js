@@ -28,7 +28,7 @@ class Square extends Obstacles {
 
     drawSquares(){
  
-        this.ctx.fillStyle = 'green'
+        this.ctx.fillStyle = 'grey'
         this.ctx.fillRect(this.obstaclesPosition.posX, this.obstaclesPosition.posY - this.refDimensions, this.refDimensions, this.refDimensions)
         
     }
@@ -47,7 +47,7 @@ class Triangle extends Obstacles {
 
     drawTriangles(){
 
-            this.ctx.fillStyle = 'green' 
+            this.ctx.fillStyle = 'grey' 
 
             this.ctx.beginPath();
             this.ctx.moveTo(this.obstaclesPosition.posX, this.obstaclesPosition.posY);
@@ -74,7 +74,7 @@ class Picks extends Obstacles {
 
     drawPicks(){
  
-        this.ctx.fillStyle = 'yellow'
+        this.ctx.fillStyle = 'grey'
 
             this.ctx.fillRect(this.obstaclesPosition.posX, this.obstaclesPosition.posY, this.refDimensions * 2, this.refDimensions / 2 - this.refDimensions)
 

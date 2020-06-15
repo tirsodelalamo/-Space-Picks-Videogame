@@ -13,8 +13,8 @@ class Background {
 
 
         this.vel = {
-            ground : 0,
-            background: 0.3,
+            ground : 2,
+            background: 0.15,
         },
         
         this.groundHeight = groundHeight,
@@ -41,7 +41,7 @@ class Background {
     }
 
     moveBackground() {
-        if(this.backgroundPosition.x <= -this.canvasSize.w / 6){
+        if(this.backgroundPosition.x <= -this.canvasSize.w / 12){
             this.backgroundPosition.x = 0;
         }
         this.backgroundPosition.x -= this.vel.background
@@ -50,10 +50,10 @@ class Background {
     drawGround(){
 
 
-        this.ctx.drawImage(this.image, this.groundPosition.x , this.canvasSize.h - this.groundHeight , this.canvasSize.w/12, this.groundHeight )
+       // this.ctx.drawImage(this.image, this.groundPosition.x , this.canvasSize.h - this.groundHeight , this.canvasSize.w/12, this.groundHeight )
         //this.ctx.drawImage(this.image, this.groundPosition.x + this.canvasSize.h,  this.canvasSize.w/12 , this.groundHeight)
-        // this.ctx.fillStyle = 'black'
-        // this.ctx.fillRect(0, this.canvasSize.h - this.groundHeight, this.canvasSize.w, this.groundHeight)
+        this.ctx.fillStyle = 'black'
+        this.ctx.fillRect(0, this.canvasSize.h - this.groundHeight, this.canvasSize.w, this.groundHeight)
         
     }
 

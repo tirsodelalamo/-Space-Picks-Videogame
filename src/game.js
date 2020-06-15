@@ -17,7 +17,7 @@ const Game = {
     velX: 2,
     fps: 60,
 
-    music: new Audio('sound/levelSoundCutted.mp3'),
+    music: new Audio('sound/levelSoundComplete50sec.mp3'),
 
 
     background : undefined,
@@ -54,7 +54,7 @@ const Game = {
     
     setDimensions(){
         
-        this.canvasSize.w = window.innerWidth * 4
+        this.canvasSize.w = window.innerWidth * 6
         this.canvasSize.h = 300
         this.canvasDom.setAttribute('width', this.canvasSize.w)
         this.canvasDom.setAttribute('height', this.canvasSize.h)
@@ -103,7 +103,7 @@ const Game = {
     },
 
     playSound(){
-        const audio = new Audio(src="/sound/levelSoundCutted.mp3")
+        const audio = new Audio(src="/sound/levelSoundComplete50sec.mp3")
         audio.loop = false
         audio.play()
     },
@@ -136,7 +136,7 @@ const Game = {
         // if(this.obstacles.squares.some(square => this.isSquareNegativeColliding(square))){
         //     alert("Holi Elena!")
         // }
-        
+
     //----------------------------triangle collisions------------------------
     //----------------------------pikes collisions---------------------------
 
