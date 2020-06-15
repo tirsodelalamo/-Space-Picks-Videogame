@@ -132,6 +132,11 @@ const Game = {
             this.player.isColliding = false
         }
     //----------------------------negative square collisions-----------------
+
+        // if(this.obstacles.squares.some(square => this.isSquareNegativeColliding(square))){
+        //     alert("Holi Elena!")
+        // }
+        
     //----------------------------triangle collisions------------------------
     //----------------------------pikes collisions---------------------------
 
@@ -169,7 +174,22 @@ const Game = {
         } else {
             return false
         }
+
     },
+
+    // isSquareNegativeColliding(square) {
+    //     // ESTOY EN EL EJE X CORRECTO
+    //     if (this.player.playerPosition.x + this.refDimensions >= square.obstaclesPosition.posX {
+
+    //         return true
+
+    //     } else {
+    //         return false 
+    //     }
+
+
+
+    // },
 
     gameOver() {
 

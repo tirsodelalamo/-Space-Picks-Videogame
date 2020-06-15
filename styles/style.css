@@ -3,13 +3,14 @@
     margin: 0
 }
 canvas {
-   /* background-color: lightgreen;*/
+    background-color: white;
     display: none;
     margin-top: 20%;
 }
 
 body {
     text-align: center;
+    background-color: lightgreen;
 }
 
 h1 {
