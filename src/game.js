@@ -67,22 +67,22 @@ const Game = {
     
     createPlayer(){
         
-        this.player = new Player(this.ctx, this.canvasSize, this.groundHeight, this.refDimensions, this.keySPACE, this.velX)
+        this.player = new Player(this.ctx, this.canvasSize, this.groundHeight, this.refDimensions, this.keySPACE)
 
-       console.log(`pos x ${this.player.playerPosition.x} pos y ${this.player.playerPosition.y}`)
+    //    console.log(`pos x ${this.player.playerPosition.x} pos y ${this.player.playerPosition.y}`)
 
     },
 
     createObstacles(){
 
         arrSquareObstacles.forEach(elem => {
-            this.obstacles.squares.push(new Square (this.ctx, this.canvasSize, this.groundHeight, this.refDimensions, elem.posX , elem.posY))
+            this.obstacles.squares.push(new Square (this.ctx, this.canvasSize, this.groundHeight, this.refDimensions, elem.posX , elem.posY, this.velX))
         })
         arrTriangleObstacles.forEach(elem => {
-            this.obstacles.triangles.push(new Triangle (this.ctx, this.canvasSize, this.groundHeight, this.refDimensions, elem.posX, elem.posY))
+            this.obstacles.triangles.push(new Triangle (this.ctx, this.canvasSize, this.groundHeight, this.refDimensions, elem.posX, elem.posY, this.velX))
         })
         arrPicksObstacles.forEach(elem => {
-            this.obstacles.picks.push(new Picks (this.ctx, this.canvasSize, this.groundHeight, this.refDimensions, elem.posX, elem.posY))
+            this.obstacles.picks.push(new Picks (this.ctx, this.canvasSize, this.groundHeight, this.refDimensions, elem.posX, elem.posY, this.velX))
         })
 
     },

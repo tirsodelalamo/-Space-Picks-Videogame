@@ -1,11 +1,11 @@
 class Player {
 
-    constructor(ctx, canvasSize, groundHeight, refDimensions, keySPACE, velX){
+    constructor(ctx, canvasSize, groundHeight, refDimensions, keySPACE){
         this.ctx = ctx,
         this.canvasSize = canvasSize,
         this.groundHeight = groundHeight,
         this.refDimensions = refDimensions,
-        this.velX = velX
+        //this.velX = velX
         this.keySPACE = keySPACE,
         this.isColliding = false,
         this.isJumping = false,
@@ -28,7 +28,7 @@ class Player {
     setListeners(){
         document.addEventListener("keydown", e =>{
             if(e.keyCode === this.keySPACE){
-                // console.log(`Absolute Position: ${this.currentBasePosition}, Player Position ${this.playerPosition.y}`)
+
                 if ( this.currentBasePosition == this.playerPosition.y){
                     this.jump()
                     console.log(`X: ${this.playerPosition.x} -- y: ${this.playerPosition.y}`) // ----------------------------------
@@ -39,7 +39,6 @@ class Player {
 
     move(){
 
-        //this.playerPosition.x += this.velX//-----------------------------------------------
         this.velY+=this.gravity
 
         if (!this.isJumping && (this.playerPosition.y >= this.canvasSize.h - this.groundHeight || this.isColliding)){

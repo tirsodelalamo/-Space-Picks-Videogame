@@ -1,8 +1,9 @@
 class Obstacles {
 
-    constructor (ctx, canvasSize, groundHeight, refDimensions, posX, posY){
+    constructor (ctx, canvasSize, groundHeight, refDimensions, posX, posY, velX){
 
         this.ctx = ctx,
+        this.velX = velX,
         this.canvasSize = canvasSize,
         this.groundHeight = groundHeight,
         this.refDimensions = refDimensions,
@@ -13,24 +14,28 @@ class Obstacles {
     }
 
 
-
 }
 
 
 
 class Square extends Obstacles {
 
-    constructor(ctx, canvasSize, groundHeight, refDimensions, posX, posY){
+    constructor(ctx, canvasSize, groundHeight, refDimensions, posX, posY, velX){
 
-        super(ctx, canvasSize, groundHeight, refDimensions, posX, posY)
+        super(ctx, canvasSize, groundHeight, refDimensions, posX, posY, velX)
 
     }
 
     drawSquares(){
+        this.moveSquare()
  
         this.ctx.fillStyle = 'grey'
         this.ctx.fillRect(this.obstaclesPosition.posX, this.obstaclesPosition.posY - this.refDimensions, this.refDimensions, this.refDimensions)
         
+    }
+
+    moveSquare(){
+        this.obstaclesPosition.posX -= this.velX
     }
 
 
@@ -39,13 +44,15 @@ class Square extends Obstacles {
 
 class Triangle extends Obstacles {
 
-    constructor (ctx, canvasSize, groundHeight, refDimensions, posX, posY){
+    constructor (ctx, canvasSize, groundHeight, refDimensions, posX, posY, velX){
 
-        super(ctx, canvasSize, groundHeight, refDimensions, posX, posY)
+        super(ctx, canvasSize, groundHeight, refDimensions, posX, posY, velX)
 
     }
 
     drawTriangles(){
+
+        this.moveTriangle()
 
             this.ctx.fillStyle = 'grey' 
 
@@ -59,6 +66,10 @@ class Triangle extends Obstacles {
 
     }
 
+    moveTriangle(){
+        this.obstaclesPosition.posX -= this.velX
+    }
+
 
 }
 
@@ -66,19 +77,24 @@ class Triangle extends Obstacles {
 
 class Picks extends Obstacles {
 
-    constructor(ctx, canvasSize, groundHeight, refDimensions, posX, posY){
+    constructor(ctx, canvasSize, groundHeight, refDimensions, posX, posY, velX){
 
-        super(ctx, canvasSize, groundHeight, refDimensions, posX, posY)
+        super(ctx, canvasSize, groundHeight, refDimensions, posX, posY, velX)
 
     }
 
     drawPicks(){
+        this.movePicks()
  
         this.ctx.fillStyle = 'blue'
 
             this.ctx.fillRect(this.obstaclesPosition.posX, this.obstaclesPosition.posY, this.refDimensions * 2, this.refDimensions / 2 - this.refDimensions)
 
         
+    }
+
+    movePicks () {
+        this.obstaclesPosition.posX -= this.velX
     }
 
 
