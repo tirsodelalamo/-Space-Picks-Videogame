@@ -39,7 +39,7 @@ class Player {
 
     move(){
 
-        this.playerPosition.x += this.velX
+        //this.playerPosition.x += this.velX//-----------------------------------------------
         this.velY+=this.gravity
 
         if (!this.isJumping && (this.playerPosition.y >= this.canvasSize.h - this.groundHeight || this.isColliding)){

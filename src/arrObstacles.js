@@ -38,9 +38,13 @@ let arrSquareObstacles = [
     {posX: 5475, posY: maxHeight - 50},   {posX: 5475, posY: maxHeight - 75}, {posX: 5475, posY: maxHeight - 100},  {posX: 5475, posY: maxHeight - 125},//12.3 subida como en el principio
     {posX: 5550, posY: maxHeight - 50},   {posX: 5550, posY: maxHeight - 75}, {posX: 5550, posY: maxHeight - 100},  {posX: 5550, posY: maxHeight - 125},  {posX: 5550, posY: maxHeight - 150}, //12.4 subida como en el principio
     {posX: 5625, posY: maxHeight - 50},   {posX: 5625, posY: maxHeight - 75}, {posX: 5625, posY: maxHeight - 100},  {posX: 5625, posY: maxHeight - 125},  {posX: 5625, posY: maxHeight - 150}, {posX: 5625, posY: maxHeight - 175}, //12.5 subida como en el principio
-
-
-
+    {posX: 5700, posY: maxHeight - 50},   {posX: 5700, posY: maxHeight - 75}, {posX: 5700, posY: maxHeight - 100},  {posX: 5700, posY: maxHeight - 125},  {posX: 5700, posY: maxHeight - 150}, {posX: 5700, posY: maxHeight - 175}, //13 se mantiene y empieza a bajar
+    {posX: 5775, posY: maxHeight - 125},  {posX: 5850, posY: maxHeight - 75}, {posX: 5925, posY: maxHeight - 100},  {posX: 6000, posY: maxHeight - 125},  {posX: 6075, posY: maxHeight - 150}, //14 SUBIDA
+    {posX: 6125, posY: maxHeight - 100}, // 15 bajada
+    {posX: 6200, posY: maxHeight - 125}, {posX: 6275, posY: maxHeight - 150}, {posX: 6300, posY: maxHeight - 150}, {posX: 6325, posY: maxHeight - 150}, {posX: 6350, posY: maxHeight - 150}, {posX: 6375, posY: maxHeight - 150},  {posX: 6400, posY: maxHeight - 150},
+    {posX: 6425, posY: maxHeight - 150}, {posX: 6450, posY: maxHeight - 150}, {posX: 6475, posY: maxHeight - 150}, {posX: 6500, posY: maxHeight - 150}, {posX: 6525, posY: maxHeight - 150},
+    {posX: 6550, posY: maxHeight - 150}, {posX: 6575, posY: maxHeight - 150}, {posX: 6600, posY: maxHeight - 150}, {posX: 6625, posY: maxHeight - 150}, {posX: 6650, posY: maxHeight - 150}, {posX: 6675, posY: maxHeight - 150}, {posX: 6700, posY: maxHeight - 150},
+    {posX: 6725, posY: maxHeight - 150}, {posX: 6750, posY: maxHeight - 150}, {posX: 6775, posY: maxHeight - 150}, {posX: 6800, posY: maxHeight - 150}, {posX: 6825, posY: maxHeight - 150}, {posX: 6850, posY: maxHeight - 150}, {posX: 6875, posY: maxHeight - 150}, 
 
 ]
 
@@ -90,7 +94,30 @@ let arrPicksObstacles = [{posX: 785, posY: maxHeight - 50},//5
     {posX: 5425, posY: maxHeight - 50}, // 12 pinchos subida
     {posX: 5500, posY: maxHeight - 50}, // 12 pinchos subida
     {posX: 5575, posY: maxHeight - 50}, // 12 pinchos subida
+    {posX: 5650, posY: maxHeight - 50}, //12 pinchos intermedio
 
+    // -----------------------------------------------------THE FLOOR IS LAVA--------------------------
+
+    {posX: 1650, posY: maxHeight - 50}, {posX: 1700, posY: maxHeight - 50}, {posX: 1750, posY: maxHeight - 50}, {posX: 1800, posY: maxHeight - 50}, {posX: 1850, posY: maxHeight - 50},
+    {posX: 1900, posY: maxHeight - 50}, {posX: 1950, posY: maxHeight - 50}, {posX: 2000, posY: maxHeight - 50}, {posX: 2050, posY: maxHeight - 50},  {posX: 2100, posY: maxHeight - 50},
+    {posX: 2150, posY: maxHeight - 50}, {posX: 2200, posY: maxHeight - 50}, {posX: 2250, posY: maxHeight - 50}, {posX: 2300, posY: maxHeight - 50},  {posX: 2350, posY: maxHeight - 50},
+    {posX: 2400, posY: maxHeight - 50}, {posX: 2450, posY: maxHeight - 50}, {posX: 2500, posY: maxHeight - 50}, {posX: 2550, posY: maxHeight - 50},  {posX: 2600, posY: maxHeight - 50}, 
+    {posX: 2650, posY: maxHeight - 50}, {posX: 2700, posY: maxHeight - 50}, {posX: 2750, posY: maxHeight - 50}, {posX: 2800, posY: maxHeight - 50},  {posX: 2850, posY: maxHeight - 50}, 
+    {posX: 2900, posY: maxHeight - 50}, {posX: 2950, posY: maxHeight - 50}, {posX: 3000, posY: maxHeight - 50}, {posX: 3050, posY: maxHeight - 50},  {posX: 3100, posY: maxHeight - 50}, 
+    {posX: 3150, posY: maxHeight - 50}, {posX: 3200, posY: maxHeight - 50}, {posX: 3250, posY: maxHeight - 50}, {posX: 3300, posY: maxHeight - 50}, {posX: 3350, posY: maxHeight - 50}, 
+    {posX: 3400, posY: maxHeight - 50}, {posX: 3450, posY: maxHeight - 50}, {posX: 3500, posY: maxHeight - 50}, {posX: 3525, posY: maxHeight - 50}, //TRAMO 1
+
+
+    {posX: 3950, posY: maxHeight - 50}, {posX: 4000, posY: maxHeight - 50}, {posX: 4050, posY: maxHeight - 50}, {posX: 4100, posY: maxHeight - 50}, {posX: 4150, posY: maxHeight - 50}, 
+    {posX: 4200, posY: maxHeight - 50}, {posX: 4250, posY: maxHeight - 50}, {posX: 4300, posY: maxHeight - 50}, {posX: 4350, posY: maxHeight - 50}, {posX: 4400, posY: maxHeight - 50}, 
+    {posX: 4450, posY: maxHeight - 50}, {posX: 4500, posY: maxHeight - 50}, {posX: 4550, posY: maxHeight - 50}, {posX: 4600, posY: maxHeight - 50}, {posX: 4650, posY: maxHeight - 50}, 
+    {posX: 4700, posY: maxHeight - 50}, {posX: 4750, posY: maxHeight - 50}, {posX: 4800, posY: maxHeight - 50}, {posX: 4850, posY: maxHeight - 50}, // TRAMO 2
+
+    {posX: 5725, posY: maxHeight - 50}, {posX: 5775, posY: maxHeight - 50}, {posX: 5825, posY: maxHeight - 50}, {posX: 5875, posY: maxHeight - 50}, {posX: 5925, posY: maxHeight - 50}, 
+    {posX: 5975, posY: maxHeight - 50}, {posX: 6025, posY: maxHeight - 50}, {posX: 6075, posY: maxHeight - 50}, {posX: 6125, posY: maxHeight - 50}, {posX: 6175, posY: maxHeight - 50}, 
+    {posX: 6225, posY: maxHeight - 50}, {posX: 6275, posY: maxHeight - 50}, {posX: 6325, posY: maxHeight - 50}, {posX: 6375, posY: maxHeight - 50}, {posX: 6425, posY: maxHeight - 50}, {posX: 6475, posY: maxHeight - 50}, 
+    {posX: 6525, posY: maxHeight - 50}, {posX: 6575, posY: maxHeight - 50}, {posX: 6625, posY: maxHeight - 50}, {posX: 6675, posY: maxHeight - 50}, {posX: 6725, posY: maxHeight - 50}, 
+    {posX: 6775, posY: maxHeight - 50}, {posX: 6825, posY: maxHeight - 50}, {posX: 6850, posY: maxHeight - 50}, // TRAMO 3
 ]
 
 

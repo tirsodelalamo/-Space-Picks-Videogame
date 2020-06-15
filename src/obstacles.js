@@ -74,7 +74,7 @@ class Picks extends Obstacles {
 
     drawPicks(){
  
-        this.ctx.fillStyle = 'grey'
+        this.ctx.fillStyle = 'blue'
 
             this.ctx.fillRect(this.obstaclesPosition.posX, this.obstaclesPosition.posY, this.refDimensions * 2, this.refDimensions / 2 - this.refDimensions)
 
