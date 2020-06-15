@@ -6,11 +6,9 @@ class Background {
         this.canvasSize = canvasSize
 
         this.image = new Image(),
-        this.imagesArr = ['images/hand-drawn-penguin-doodle-pattern_23-2148184077.jpg', 'images/85418.jpg','images/4581.jpg',  'images/OMEGGK0.jpg']
+        this.imagesArr = ['images/hand-drawn-penguin-doodle-pattern_23-2148184077.jpg', /*'images/85418.jpg','images/4581.jpg',  'images/OMEGGK0.jpg'*/]
         this.image.src = this.imagesArr[parseInt(Math.random()*this.imagesArr.length)]
 
-        // this.groundImage = new Image(),
-        // this.groundImage.src = ''
 
 
         this.vel = {

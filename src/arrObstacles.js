@@ -25,7 +25,7 @@ let arrSquareObstacles = [
     {posX: 3425, posY: maxHeight - 75},  {posX: 3450, posY: maxHeight - 75},  {posX: 3475, posY: maxHeight - 75},  {posX: 3500, posY: maxHeight - 75}, {posX: 3525, posY: maxHeight - 75},  {posX: 3550, posY: maxHeight - 75}, //2
     {posX: 3575, posY: maxHeight - 50},  {posX: 3600, posY: maxHeight - 50},  {posX: 3625, posY: maxHeight - 50},  {posX: 3650, posY: maxHeight - 50}, {posX: 3675, posY: maxHeight - 50}, /*pick*/  {posX: 3750, posY: maxHeight - 50},  {posX: 3775, posY: maxHeight - 50},  {posX: 3800, posY: maxHeight - 50}, //3.1
     {posX: 3825, posY: maxHeight - 50},  {posX: 3850, posY: maxHeight - 50},  {posX: 3875, posY: maxHeight - 50},  {posX: 3900, posY: maxHeight - 50},  {posX: 3925, posY: maxHeight - 50}, //3.2   
-    {posX: 4000, posY: maxHeight - 75},  {posX: 4075, posY: maxHeight - 100},  {posX: 4150, posY: maxHeight - 125},  {posX: 4225, posY: maxHeight - 150},  {posX: 4300, posY: maxHeight - 175},  //4 SUBIDA
+    {posX: 4000, posY: maxHeight - 75},  {posX: 4075, posY: maxHeight - 100}, {posX: 4150, posY: maxHeight - 125},  {posX: 4225, posY: maxHeight - 150},  {posX: 4300, posY: maxHeight - 175},  //4 SUBIDA
     {posX: 4350, posY: maxHeight - 125}, {posX: 4375, posY: maxHeight - 125},  //5
     {posX: 4425, posY: maxHeight - 175}, //6 salto
     {posX: 4475, posY: maxHeight - 125}, {posX: 4500, posY: maxHeight - 125}, // 7 plataforma 2

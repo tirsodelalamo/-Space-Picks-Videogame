@@ -106,6 +106,7 @@ const Game = {
         const audio = new Audio(src="/sound/levelSoundComplete50sec.mp3")
         audio.loop = false
         audio.play()
+
     },
 
 
@@ -133,9 +134,9 @@ const Game = {
         }
     //----------------------------negative square collisions-----------------
 
-        // if(this.obstacles.squares.some(square => this.isSquareNegativeColliding(square))){
-        //     alert("Holi Elena!")
-        // }
+        if(this.obstacles.squares.some(square => this.isSquareNegativeColliding(square))){
+            this.gameOver()
+        }
 
     //----------------------------triangle collisions------------------------
     //----------------------------pikes collisions---------------------------
@@ -177,22 +178,38 @@ const Game = {
 
     },
 
-    // isSquareNegativeColliding(square) {
-    //     // ESTOY EN EL EJE X CORRECTO
-    //     if (this.player.playerPosition.x + this.refDimensions >= square.obstaclesPosition.posX {
+    isSquareNegativeColliding(square) {
+        // ESTOY EN EL EJE X CORRECTO
+        if (!this.player.isColliding && 
+            this.player.playerPosition.x + this.refDimensions >= square.obstaclesPosition.posX -1 &&
+            this.player.playerPosition.x + this.refDimensions <= square.obstaclesPosition.posX + 1 && //los cuadrados tocan por los vertices de abajo)
+            
+            ((this.player.playerPosition.y >= square.obstaclesPosition.posY - this.refDimensions &&
+            this.player.playerPosition.y  <= square.obstaclesPosition.posY)
+            ||
+            (this.player.playerPosition.y - this.refDimensions >= square.obstaclesPosition.posY &&
+            this.player.playerPosition.y - this.refDimensions <= square.obstaclesPosition.posY - this.refDimensions)
+                ))
+             {
+            return true
 
-    //         return true
-
-    //     } else {
-    //         return false 
-    //     }
+        } else {
+            return false 
+        }
 
 
 
-    // },
+    },
 
     gameOver() {
 
+        // this.music.pause()
+        // const canvas = document.querySelector('canvas')
+        // canvas.style.display = 'none'
+        // const gameOverScreen = document.querySelector('.gameOver')
+        // gameOverScreen.style.display = 'block'
+        location.reload()
+        return true
     }
 
 }

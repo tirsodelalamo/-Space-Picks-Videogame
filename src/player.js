@@ -5,7 +5,7 @@ class Player {
         this.canvasSize = canvasSize,
         this.groundHeight = groundHeight,
         this.refDimensions = refDimensions,
-        //this.velX = velX
+
         this.keySPACE = keySPACE,
         this.isColliding = false,
         this.isJumping = false,
@@ -31,7 +31,7 @@ class Player {
 
                 if ( this.currentBasePosition == this.playerPosition.y){
                     this.jump()
-                    console.log(`X: ${this.playerPosition.x} -- y: ${this.playerPosition.y}`) // ----------------------------------
+                    // console.log(`X: ${this.playerPosition.x} -- y: ${this.playerPosition.y}`) // ----------------------------------
                 }
             }
         })
@@ -51,7 +51,7 @@ class Player {
     }
 
     jump(){
-        console.log("Jumping")
+
         this.isJumping = true
         this.velY = this.jumpVel
         this.playerPosition.y += this.velY
