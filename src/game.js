@@ -54,7 +54,7 @@ const Game = {
     
     setDimensions(){
         
-        this.canvasSize.w = window.innerWidth * 7
+        this.canvasSize.w = window.innerWidth / 2
         this.canvasSize.h = 300
         this.canvasDom.setAttribute('width', this.canvasSize.w)
         this.canvasDom.setAttribute('height', this.canvasSize.h)
