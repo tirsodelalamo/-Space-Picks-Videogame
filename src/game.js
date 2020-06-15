@@ -17,7 +17,12 @@ const Game = {
     velX: 2,
     fps: 60,
 
-    music: new Audio('sound/levelSoundComplete50sec.mp3'),
+    music: {
+        levelSound: new Audio('sound/levelSoundComplete50sec.mp3'),
+        crashSound: new Audio('sound/Explosion+3.mp3'),
+        jumpSound: new Audio('sound/350906__cabled-mess__jump-c-04.wav') 
+    },
+
 
 
     background : undefined,
@@ -42,8 +47,8 @@ const Game = {
     },
 
     start() {
-        this.music.play()
-        this.music.volume = 0.1
+        this.music.levelSound.play()
+        this.music.levelSound.volume = 0.1
         setInterval(() =>{
             this.clearScreen()
             this.draw()
@@ -68,8 +73,6 @@ const Game = {
     createPlayer(){
         
         this.player = new Player(this.ctx, this.canvasSize, this.groundHeight, this.refDimensions, this.keySPACE)
-
-    //    console.log(`pos x ${this.player.playerPosition.x} pos y ${this.player.playerPosition.y}`)
 
     },
 
@@ -102,12 +105,12 @@ const Game = {
         this.ctx.clearRect(0 ,0 , this.canvasSize.w, this.canvasSize.h)
     },
 
-    playSound(){
-        const audio = new Audio(src="/sound/levelSoundComplete50sec.mp3")
-        audio.loop = false
-        audio.play()
+    // playSound(){
+    //     const audio = new Audio(src="/sound/levelSoundComplete50sec.mp3") // NO NECESARIO
+    //     audio.loop = false
+    //     audio.play()
 
-    },
+    // },
 
 
 //---------------------------------------COLLISIONS---------------------------------------------------------------------------------
@@ -140,6 +143,10 @@ const Game = {
 
     //----------------------------triangle collisions------------------------
     //----------------------------pikes collisions---------------------------
+
+        if(this.obstacles.picks.some(picks => this.isPickNegativeColliding(picks))){
+            this.gameOver()
+        }
 
     },
 
@@ -178,6 +185,7 @@ const Game = {
 
     },
 
+
     isSquareNegativeColliding(square) {
         // ESTOY EN EL EJE X CORRECTO
         if (!this.player.isColliding && 
@@ -197,9 +205,30 @@ const Game = {
             return false 
         }
 
-
-
     },
+
+    
+    isPickNegativeColliding(picks) {
+        // ESTOY EN EL EJE Y CORRECTO
+         if (this.player.playerPosition.y <= picks.obstaclesPosition.posY - this.refDimensions/2 + 1 &&
+             this.player.playerPosition.y >= picks.obstaclesPosition.posY - this.refDimensions/2 - 1 &&
+             
+             //MI VERTICE ABAJO/IZQ ESTA TOCANDO EL CUADRADO
+             ((this.player.playerPosition.x >= picks.obstaclesPosition.posX &&
+                 this.player.playerPosition.x <= picks.obstaclesPosition.posX + this.refDimensions/2)
+             ||
+             //MI VERTICE ABAJO/DER ESTA TOCANDO EL CUADRADO
+             (this.player.playerPosition.x + this.refDimensions >= picks.obstaclesPosition.posX &&
+             this.player.playerPosition.x + this.refDimensions <= picks.obstaclesPosition.posX + this.refDimensions/2) //REVISAR!!!!! BUGS!!
+             )) {
+ 
+             return true
+ 
+         } else {
+             return false
+         }
+ 
+     },
 
     gameOver() {
 
