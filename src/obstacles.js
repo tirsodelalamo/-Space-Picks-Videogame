@@ -29,6 +29,12 @@ class Square extends Obstacles {
     drawSquares(){
         this.moveSquare()
 
+        this.ctx.beginPath()
+        this.ctx.lineWidth = "1"
+        this.ctx.strokeStyle = "black"
+        this.ctx.rect(this.obstaclesPosition.posX, this.obstaclesPosition.posY - this.refDimensions, this.refDimensions, this.refDimensions)
+        this.ctx.stroke() //FIN BORDE CUADRADOS
+
         this.ctx.fillStyle = '#666666'
         this.ctx.lineWidth = 1
         this.ctx.strokeStyle = 'black'

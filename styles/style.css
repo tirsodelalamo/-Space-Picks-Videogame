@@ -3,16 +3,21 @@
     margin: 0
 }
 canvas {
-    font-size: 20px;
+    /*font-size: 20px;
     display: none;
-    margin: 20% auto;
+    margin: 150px 150 px ;*/ 
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 180px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 body {
     font-family: 'Press Start 2P', cursive;
     text-align: center;
     background-color: black;
-    color: white
+    color: white;
 }
 
 h1 {
@@ -22,7 +27,7 @@ h1 {
 .gameOver{
 
     padding: 15%;
-    margin-top: 10%;
+    margin-top: 7%;
     color: white;
     display: none;
     background-color: black;
