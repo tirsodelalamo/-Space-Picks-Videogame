@@ -51,6 +51,7 @@ class Player {
 
     }
 
+
     jump(){
 
         

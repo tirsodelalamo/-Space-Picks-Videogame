@@ -28,8 +28,11 @@ class Square extends Obstacles {
 
     drawSquares(){
         this.moveSquare()
- 
+
         this.ctx.fillStyle = '#666666'
+        this.ctx.lineWidth = 1
+        this.ctx.strokeStyle = 'black'
+        this.ctx.stroke()
         this.ctx.fillRect(this.obstaclesPosition.posX, this.obstaclesPosition.posY - this.refDimensions, this.refDimensions, this.refDimensions)
         
     }
@@ -54,7 +57,13 @@ class Triangle extends Obstacles {
 
         this.moveTriangle()
 
+            this.ctx.lineWidth = 1
+            this.ctx.strokeStyle = 'black'
+            this.ctx.stroke()
+
+
             this.ctx.fillStyle = '#666666' 
+
 
             this.ctx.beginPath();
             this.ctx.moveTo(this.obstaclesPosition.posX, this.obstaclesPosition.posY);

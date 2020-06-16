@@ -3,27 +3,35 @@
     margin: 0
 }
 canvas {
+    font-size: 20px;
     display: none;
     margin-top: 20%;
     margin-left: 25%
 }
 
 body {
+    font-family: 'Geostar';
     text-align: center;
-    background-color: lightgreen;
+    background-color: black;
+    color: white
 }
 
 h1 {
     margin-top: 23%
 }
 
-/* .gameOver{
+.gameOver{
+
+    padding: 15%;
+    margin-top: 10%;
+    color: white;
     display: none;
-    margin-top: 15%;
-    margin-left: 20%;
-    height: 400;
-    width: 800;
-    background-color: white;
-} */
+    background-color: black;
+    text-align: center;
+}
+
+.gameOver p {
+    margin-top: 20px;
+}
 
 

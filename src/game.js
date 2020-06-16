@@ -259,8 +259,8 @@ const Game = {
 
     isTriangleUpNegativeColliding(triangle){ //POSIBLES RETOQUES DE ANCHO
 
-        if (this.player.playerPosition.y <= triangle.obstaclesPosition.posY - 20 + 2 && 
-            this.player.playerPosition.y >= triangle.obstaclesPosition.posY - 20 - 2 &&
+        if (this.player.playerPosition.y <= triangle.obstaclesPosition.posY - 20 + 3 && 
+            this.player.playerPosition.y >= triangle.obstaclesPosition.posY - 20 - 3 &&
             
             //MI VERTICE ABAJO/IZQ ESTA TOCANDO EL CUADRADO
             ((this.player.playerPosition.x >= triangle.obstaclesPosition.posX + 11.5 &&
@@ -283,8 +283,8 @@ const Game = {
 
     isTriangleLateralNegativeColliding(triangle){ //POSIBLES RETOQUES DE ANCHO
         
-        if (this.player.playerPosition.x + this.refDimensions >= triangle.obstaclesPosition.posX +11.5 -1 &&
-            this.player.playerPosition.x + this.refDimensions <= triangle.obstaclesPosition.posX + 13.5 + 1 && //los cuadrados tocan por los vertices de abajo)
+        if (this.player.playerPosition.x + this.refDimensions >= triangle.obstaclesPosition.posX +11.5 -2 &&
+            this.player.playerPosition.x + this.refDimensions <= triangle.obstaclesPosition.posX + 13.5 + 2 && //los cuadrados tocan por los vertices de abajo)
             
             ((this.player.playerPosition.y >= triangle.obstaclesPosition.posY - this.refDimensions &&
             this.player.playerPosition.y  <= triangle.obstaclesPosition.posY)
@@ -331,12 +331,16 @@ const Game = {
 
     gameOver() {
 
-        // this.music.pause()
-        // const canvas = document.querySelector('canvas')
-        // canvas.style.display = 'none'
-        // const gameOverScreen = document.querySelector('.gameOver')
-        // gameOverScreen.style.display = 'block'
-        location.reload()
+        this.music.levelSound.pause()
+        const canvas = document.querySelector('canvas')
+        canvas.style.display = 'none'
+        const gameOverScreen = document.querySelector('.gameOver')
+        gameOverScreen.style.display = 'block'
+        document.addEventListener('keydown', e =>{
+            if (e.keyCode == 82){
+                location.reload()  
+            }
+        })
         return true
     }
 
