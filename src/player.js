@@ -20,7 +20,7 @@ class Player {
 
     drawPlayer(){
         this.move()
-        this.ctx.fillStyle = 'black'
+        this.ctx.fillStyle = '#c10303'
         this.ctx.fillRect(this.playerPosition.x, this.playerPosition.y - this.refDimensions , this.refDimensions, this.refDimensions)
         this.setListeners()
     }

@@ -1,5 +1,6 @@
 
 const Game = {
+
     title: 'Geometry Dash',
     description: 'Imposible game!',
     authors: 'Tirso del Álamo y Elena Sánchez',
@@ -22,7 +23,6 @@ const Game = {
         crashSound: new Audio('sound/Explosion+3.mp3'),
         jumpSound: new Audio('sound/350906__cabled-mess__jump-c-04.wav') 
     },
-
 
 
     background : undefined,
@@ -142,6 +142,8 @@ const Game = {
         }
 
     //----------------------------triangle collisions------------------------
+
+
     //----------------------------pikes collisions---------------------------
 
         if(this.obstacles.picks.some(picks => this.isPickNegativeColliding(picks))){
@@ -211,8 +213,8 @@ const Game = {
     
     isPickNegativeColliding(picks) {
         // ESTOY EN EL EJE Y CORRECTO
-         if (this.player.playerPosition.y <= picks.obstaclesPosition.posY - this.refDimensions/2 + 2 && 
-             this.player.playerPosition.y >= picks.obstaclesPosition.posY - this.refDimensions/2 - 2 &&
+         if (this.player.playerPosition.y <= picks.obstaclesPosition.posY - this.refDimensions/2 + 3 && 
+             this.player.playerPosition.y >= picks.obstaclesPosition.posY - this.refDimensions/2 - 3 &&
              
              //MI VERTICE ABAJO/IZQ ESTA TOCANDO EL CUADRADO
              ((this.player.playerPosition.x >= picks.obstaclesPosition.posX &&
