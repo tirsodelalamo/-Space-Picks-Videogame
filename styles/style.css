@@ -5,8 +5,7 @@
 canvas {
     font-size: 20px;
     display: none;
-    margin-top: 20%;
-    margin-left: 25%
+    margin: 20% auto;
 }
 
 body {
@@ -33,6 +32,16 @@ h1 {
 .gameOver p {
     margin-top: 20px;
 
+}
+
+
+.victory{
+    padding: 15%;
+    margin-top: 10%;
+    color: white;
+    display: none;
+    background-color: black;
+    text-align: center;
 }
 
 

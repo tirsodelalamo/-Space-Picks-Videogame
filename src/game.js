@@ -17,7 +17,7 @@ const Game = {
     refDimensions: 25,
     velX: 2,
     fps: 60,
-
+    interval: undefined,
     music: {
         levelSound: new Audio('sound/levelSoundComplete50sec.mp3'),
         crashSound: new Audio('sound/explode_11.mp3'),
@@ -32,6 +32,8 @@ const Game = {
         triangles: [],
         picks: []
     },
+
+    explotionFrame : 0,
 
 
 
@@ -49,18 +51,19 @@ const Game = {
     start() {
         this.music.levelSound.play()
         this.music.levelSound.volume = 0.1
-        setInterval(() =>{
+        this.interval = setInterval(() =>{
             this.clearScreen()
             this.draw()
             this.detectCollisions()
             this.removeObstacles()
+            this.victory()
 
         },1000 / this.fps)
     },
     
     setDimensions(){
         
-        this.canvasSize.w = window.innerWidth / 2
+        this.canvasSize.w = 500
         this.canvasSize.h = 300
         this.canvasDom.setAttribute('width', this.canvasSize.w)
         this.canvasDom.setAttribute('height', this.canvasSize.h)
@@ -147,31 +150,31 @@ const Game = {
     //----------------------------negative square lateral collisions-----------------
 
         if(this.obstacles.squares.some(square => this.isSquareLateralNegativeColliding(square))){
-            this.gameOver()
+            this.endGame()
         }
         
     //----------------------------negative square down collisions-----------------
 
         if(this.obstacles.squares.some(square => this.isSquareDownNegativeColliding(square))){
-            this.gameOver()
+            this.endGame()
         }
     //----------------------------triangle Up collisions------------------------
 
         if(this.obstacles.triangles.some(triangles => this.isTriangleUpNegativeColliding(triangles))){
-            this.gameOver()
+            this.endGame()
         }
     
     //----------------------------triangle lateral collisions------------------------
 
         if(this.obstacles.triangles.some(triangles => this.isTriangleLateralNegativeColliding(triangles))){
-            this.gameOver()
+            this.endGame()
         }
 
 
     //----------------------------pikes collisions---------------------------
 
         if(this.obstacles.picks.some(picks => this.isPickNegativeColliding(picks))){
-            this.gameOver()
+            this.endGame()
         }
 
     },
@@ -317,7 +320,6 @@ const Game = {
              this.player.playerPosition.x + this.refDimensions <= picks.obstaclesPosition.posX + this.refDimensions * 2) 
              )) {
 
- 
              return true
  
          } else {
@@ -327,7 +329,7 @@ const Game = {
      },
 
 
-
+//------------------------------------------------------------Hasta aquí colisiones-------------------------------------------
 
     gameOver() {
 
@@ -342,6 +344,52 @@ const Game = {
             }
         })
         return true
+    },
+
+    victory() {
+
+        if ( this.obstacles.squares.length == 0){
+            this.music.levelSound.pause()
+            const canvas = document.querySelector('canvas')
+            canvas.style.display = 'none'
+            const victoryScreen = document.querySelector('.victory')
+            victoryScreen.style.display = 'block'
+            document.addEventListener('keydown', e =>{
+                if (e.keyCode == 82){
+                    location.reload()  
+                }
+            })
+        }
+    },
+
+    endGame (){
+        clearInterval(this.interval)
+        setTimeout(() => {
+            this.gameOver()
+            clearInterval(this.interval)
+        }, 800)
+        this.explotionAnimation()
+    },
+
+    explotionAnimation (){
+        this.interval = setInterval(() => {
+            this.clearScreen()
+            this.background.drawBackground()
+            this.background.drawGround()
+            this.obstacles.squares.forEach(elem => elem.drawSquares())
+            this.obstacles.triangles.forEach(elem => elem.drawTriangles()) 
+            this.obstacles.picks.forEach(elem => elem.drawPicks())             
+            let explotionImage = new Image()
+            explotionImage.src = explotion[this.explotionFrame]
+            explotionImage.onload = () => {
+                this.ctx.drawImage( explotionImage, this.player.playerPosition.x - this.refDimensions, this.player.playerPosition.y - this.groundHeight - this.refDimensions/2, this.refDimensions*4, this.refDimensions*4)
+            }
+            this.explotionFrame++           
+        }, 50)
     }
 
 }
+
+
+
+

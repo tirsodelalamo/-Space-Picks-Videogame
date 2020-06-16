@@ -14,7 +14,7 @@ class Player {
         this.velY = 0,
         this.jumpVel = -6,
         this.gravity = 0.31,
-        this.currentBasePosition = canvasSize.h - groundHeight 
+        this.currentBasePosition = canvasSize.h - groundHeight
 
     }
 
@@ -24,6 +24,7 @@ class Player {
         this.ctx.fillRect(this.playerPosition.x, this.playerPosition.y - this.refDimensions , this.refDimensions, this.refDimensions)
         this.setListeners()
     }
+
 
     setListeners(){
         document.addEventListener("keydown", e =>{
