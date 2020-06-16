@@ -20,7 +20,7 @@ const Game = {
 
     music: {
         levelSound: new Audio('sound/levelSoundComplete50sec.mp3'),
-        crashSound: new Audio('sound/Explosion+3.mp3'),
+        crashSound: new Audio('sound/explode_11.mp3'),
         jumpSound: new Audio('sound/350906__cabled-mess__jump-c-04.wav') 
     },
 
@@ -106,7 +106,14 @@ const Game = {
         this.ctx.clearRect(0 ,0 , this.canvasSize.w, this.canvasSize.h)
     },
 
+    removeObstacles(){
+        this.obstacles.squares = this.obstacles.squares.filter(elem => elem.obstaclesPosition.posX >= -this.refDimensions * 2)
 
+        this.obstacles.triangles = this.obstacles.triangles.filter(elem => elem.obstaclesPosition.posX >= -this.refDimensions * 2)
+
+        this.obstacles.picks = this.obstacles.picks.filter(elem => elem.obstaclesPosition.posX >= -this.refDimensions * 2)
+      
+    },
     // playSound(){
     //     const audio = new Audio(src="/sound/levelSoundComplete50sec.mp3") // NO NECESARIO
     //     audio.loop = false
@@ -319,14 +326,7 @@ const Game = {
  
      },
 
-     removeObstacles(){
-         this.obstacles.squares = this.obstacles.squares.filter(elem => elem.obstaclesPosition.posX >= -this.refDimensions * 2)
 
-         this.obstacles.triangles = this.obstacles.triangles.filter(elem => elem.obstaclesPosition.posX >= -this.refDimensions * 2)
-
-         this.obstacles.picks = this.obstacles.picks.filter(elem => elem.obstaclesPosition.posX >= -this.refDimensions * 2)
-       
-     },
 
 
     gameOver() {
