@@ -12,7 +12,7 @@ let arrSquareObstacles = [
     {posX: 2125, posY: maxHeight - 125}, {posX: 2150, posY: maxHeight - 125}, {posX: 2175, posY: maxHeight - 125}, {posX: 2200, posY: maxHeight - 125}, {posX: 2225, posY: maxHeight - 125},  {posX: 2250, posY: maxHeight - 125}, //14.2
     {posX: 2100, posY: maxHeight - 175}, {posX: 2125, posY: maxHeight - 175},   //15.2
     {posX: 2275, posY: maxHeight - 100}, {posX: 2300, posY: maxHeight - 100}, {posX: 2325, posY: maxHeight - 100}, {posX: 2350, posY: maxHeight - 100}, {posX: 2375, posY: maxHeight - 100},  {posX: 2400, posY: maxHeight - 100}, {posX: 2425, posY: maxHeight - 100}, {posX: 2450, posY: maxHeight - 100}, //16
-    {posX: 2325, posY: maxHeight - 155}, {posX: 2350, posY: maxHeight - 155}, {posX: 2375, posY: maxHeight - 155}, {posX: 2400, posY: maxHeight - 155}, //17
+    {posX: 2325, posY: maxHeight - 160}, {posX: 2350, posY: maxHeight - 160}, {posX: 2375, posY: maxHeight - 160}, {posX: 2400, posY: maxHeight - 160}, //17
     {posX: 2475, posY: maxHeight - 125}, {posX: 2500, posY: maxHeight - 125}, {posX: 2525, posY: maxHeight - 125}, {posX: 2550, posY: maxHeight - 125}, //18
     {posX: 2575, posY: maxHeight - 75},  {posX: 2600, posY: maxHeight - 75},  {posX: 2625, posY: maxHeight - 75},  {posX: 2650, posY: maxHeight - 75},  {posX: 2675, posY: maxHeight - 75},   {posX: 2700, posY: maxHeight - 75},//19
     {posX: 2775, posY: maxHeight - 100}, {posX: 2850, posY: maxHeight - 125}, {posX: 2925, posY: maxHeight - 150}, {posX: 3000, posY: maxHeight - 175},  //20
@@ -60,7 +60,7 @@ let arrTriangleObstacles = [{posX: 350, posY: maxHeight - 50}, //1
     {posX: 1075, posY: maxHeight - 50},  {posX: 1100, posY: maxHeight - 50}, //9
     {posX: 1575, posY: maxHeight - 75}, //12
     {posX: 2075, posY: maxHeight - 150}, {posX: 2100, posY: maxHeight - 150}, {posX: 2125, posY: maxHeight - 150}, {posX: 2150, posY: maxHeight - 150}, //15.1
-    {posX: 2325, posY: maxHeight - 180}, {posX: 2350, posY: maxHeight - 180}, {posX: 2375, posY: maxHeight - 180}, {posX: 2400, posY: maxHeight - 180},//17
+    {posX: 2325, posY: maxHeight - 185}, {posX: 2350, posY: maxHeight - 185}, {posX: 2375, posY: maxHeight - 185}, {posX: 2400, posY: maxHeight - 185},//17
     {posX: 2550, posY: maxHeight - 150}, //18
     {posX: 2575, posY: maxHeight - 100}, //19
   

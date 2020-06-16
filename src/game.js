@@ -53,6 +53,7 @@ const Game = {
             this.clearScreen()
             this.draw()
             this.detectCollisions()
+            this.removeObstacles()
 
         },1000 / this.fps)
     },
@@ -105,6 +106,7 @@ const Game = {
         this.ctx.clearRect(0 ,0 , this.canvasSize.w, this.canvasSize.h)
     },
 
+
     // playSound(){
     //     const audio = new Audio(src="/sound/levelSoundComplete50sec.mp3") // NO NECESARIO
     //     audio.loop = false
@@ -135,13 +137,28 @@ const Game = {
         } else {
             this.player.isColliding = false
         }
-    //----------------------------negative square collisions-----------------
+    //----------------------------negative square lateral collisions-----------------
 
-        if(this.obstacles.squares.some(square => this.isSquareNegativeColliding(square))){
+        if(this.obstacles.squares.some(square => this.isSquareLateralNegativeColliding(square))){
             this.gameOver()
         }
+        
+    //----------------------------negative square down collisions-----------------
 
-    //----------------------------triangle collisions------------------------
+        if(this.obstacles.squares.some(square => this.isSquareDownNegativeColliding(square))){
+            this.gameOver()
+        }
+    //----------------------------triangle Up collisions------------------------
+
+        if(this.obstacles.triangles.some(triangles => this.isTriangleUpNegativeColliding(triangles))){
+            this.gameOver()
+        }
+    
+    //----------------------------triangle lateral collisions------------------------
+
+        if(this.obstacles.triangles.some(triangles => this.isTriangleLateralNegativeColliding(triangles))){
+            this.gameOver()
+        }
 
 
     //----------------------------pikes collisions---------------------------
@@ -188,7 +205,7 @@ const Game = {
     },
 
 
-    isSquareNegativeColliding(square) {
+    isSquareLateralNegativeColliding(square) {
         // ESTOY EN EL EJE X CORRECTO
         if (!this.player.isColliding && 
             this.player.playerPosition.x + this.refDimensions >= square.obstaclesPosition.posX -1 &&
@@ -199,6 +216,74 @@ const Game = {
             ||
             (this.player.playerPosition.y - this.refDimensions >= square.obstaclesPosition.posY &&
             this.player.playerPosition.y - this.refDimensions <= square.obstaclesPosition.posY - this.refDimensions)
+                ))
+             {
+            
+            return true
+
+        } else {
+            return false 
+        }
+
+    },
+
+    isSquareDownNegativeColliding(square){
+
+        if (this.player.playerPosition.y - this.refDimensions<= square.obstaclesPosition.posY  + 3 &&
+            this.player.playerPosition.y - this.refDimensions>= square.obstaclesPosition.posY  - 3 &&
+            
+            //MI VERTICE ABAJO/IZQ ESTA TOCANDO EL CUADRADO
+            ((this.player.playerPosition.x >= square.obstaclesPosition.posX &&
+                this.player.playerPosition.x <= square.obstaclesPosition.posX + this.refDimensions)
+            ||
+            //MI VERTICE ABAJO/DER ESTA TOCANDO EL CUADRADO
+            (this.player.playerPosition.x + this.refDimensions >= square.obstaclesPosition.posX &&
+            this.player.playerPosition.x + this.refDimensions <= square.obstaclesPosition.posX + this.refDimensions)
+            )) {
+
+            return true
+
+        } else {
+            return false
+        }
+
+    },
+
+
+    isTriangleUpNegativeColliding(triangle){ //POSIBLES RETOQUES DE ANCHO
+
+        if (this.player.playerPosition.y <= triangle.obstaclesPosition.posY - 20 + 2 && 
+            this.player.playerPosition.y >= triangle.obstaclesPosition.posY - 20 - 2 &&
+            
+            //MI VERTICE ABAJO/IZQ ESTA TOCANDO EL CUADRADO
+            ((this.player.playerPosition.x >= triangle.obstaclesPosition.posX + 11.5 &&
+                this.player.playerPosition.x <= triangle.obstaclesPosition.posX + 13.5)
+            ||
+            //MI VERTICE ABAJO/DER ESTA TOCANDO EL CUADRADO
+            (this.player.playerPosition.x + this.refDimensions >= triangle.obstaclesPosition.posX + 11.5 &&
+            this.player.playerPosition.x + this.refDimensions <= triangle.obstaclesPosition.posX + 13.5) 
+            )) {
+
+            return true
+
+        } else {
+
+            return false
+        }
+
+    },
+
+
+    isTriangleLateralNegativeColliding(triangle){ //POSIBLES RETOQUES DE ANCHO
+        
+        if (this.player.playerPosition.x + this.refDimensions >= triangle.obstaclesPosition.posX +11.5 -1 &&
+            this.player.playerPosition.x + this.refDimensions <= triangle.obstaclesPosition.posX + 13.5 + 1 && //los cuadrados tocan por los vertices de abajo)
+            
+            ((this.player.playerPosition.y >= triangle.obstaclesPosition.posY - this.refDimensions &&
+            this.player.playerPosition.y  <= triangle.obstaclesPosition.posY)
+            ||
+            (this.player.playerPosition.y - this.refDimensions >= triangle.obstaclesPosition.posY &&
+            this.player.playerPosition.y - this.refDimensions <= triangle.obstaclesPosition.posY - this.refDimensions)
                 ))
              {
             
@@ -233,6 +318,16 @@ const Game = {
          }
  
      },
+
+     removeObstacles(){
+         this.obstacles.squares = this.obstacles.squares.filter(elem => elem.obstaclesPosition.posX >= -this.refDimensions * 2)
+
+         this.obstacles.triangles = this.obstacles.triangles.filter(elem => elem.obstaclesPosition.posX >= -this.refDimensions * 2)
+
+         this.obstacles.picks = this.obstacles.picks.filter(elem => elem.obstaclesPosition.posX >= -this.refDimensions * 2)
+       
+     },
+
 
     gameOver() {
 
