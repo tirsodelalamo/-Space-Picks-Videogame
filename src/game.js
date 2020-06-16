@@ -371,7 +371,9 @@ const Game = {
         this.explotionAnimation()
     },
 
-    explotionAnimation (){
+    explotionAnimation (){ 
+        this.music.levelSound.pause()
+        this.music.crashSound.play()
         this.interval = setInterval(() => {
             this.clearScreen()
             this.background.drawBackground()
