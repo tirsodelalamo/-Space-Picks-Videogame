@@ -199,6 +199,7 @@ const Game = {
             this.player.playerPosition.y - this.refDimensions <= square.obstaclesPosition.posY - this.refDimensions)
                 ))
              {
+            
             return true
 
         } else {
@@ -210,17 +211,18 @@ const Game = {
     
     isPickNegativeColliding(picks) {
         // ESTOY EN EL EJE Y CORRECTO
-         if (this.player.playerPosition.y <= picks.obstaclesPosition.posY - this.refDimensions/2 + 1 &&
-             this.player.playerPosition.y >= picks.obstaclesPosition.posY - this.refDimensions/2 - 1 &&
+         if (this.player.playerPosition.y <= picks.obstaclesPosition.posY - this.refDimensions/2 + 2 && 
+             this.player.playerPosition.y >= picks.obstaclesPosition.posY - this.refDimensions/2 - 2 &&
              
              //MI VERTICE ABAJO/IZQ ESTA TOCANDO EL CUADRADO
              ((this.player.playerPosition.x >= picks.obstaclesPosition.posX &&
-                 this.player.playerPosition.x <= picks.obstaclesPosition.posX + this.refDimensions/2)
+                 this.player.playerPosition.x <= picks.obstaclesPosition.posX + this.refDimensions * 2)
              ||
              //MI VERTICE ABAJO/DER ESTA TOCANDO EL CUADRADO
-             (this.player.playerPosition.x + this.refDimensions >= picks.obstaclesPosition.posX &&
-             this.player.playerPosition.x + this.refDimensions <= picks.obstaclesPosition.posX + this.refDimensions/2) //REVISAR!!!!! BUGS!!
+             (this.player.playerPosition.x + this.refDimensions >= picks.obstaclesPosition.posX + this.refDimensions * 2 &&
+             this.player.playerPosition.x + this.refDimensions <= picks.obstaclesPosition.posX + this.refDimensions * 2) 
              )) {
+
  
              return true
  
