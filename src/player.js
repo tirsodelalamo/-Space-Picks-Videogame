@@ -14,15 +14,19 @@ class Player {
         this.velY = 0,
         this.jumpVel = -6,
         this.gravity = 0.31,
-        this.currentBasePosition = canvasSize.h - groundHeight
+        this.currentBasePosition = canvasSize.h - groundHeight,
 
+        this.imageRandom = new Image(),
+        this.imagesPlayer = ['images/playerImages/batmanPurple.png', 'images/playerImages/creeperGreen.png', 'images/playerImages/pervertFacePink.png', 'images/playerImages/skullGrey.png', 'images/playerImages/spidermanRed.png', 'images/playerImages/tongueFaceYellow.png'],
+        this.imageRandom.src = this.imagesPlayer[parseInt(Math.random()*this.imagesPlayer.length)]
     }
 
     drawPlayer(){
         this.move()
-        this.ctx.fillStyle = '#c10303'
-        this.ctx.fillRect(this.playerPosition.x, this.playerPosition.y - this.refDimensions , this.refDimensions, this.refDimensions)
-        this.setListeners()
+        // this.ctx.fillStyle = '#c10303'
+        // this.ctx.fillRect(this.playerPosition.x, this.playerPosition.y - this.refDimensions , this.refDimensions, this.refDimensions)
+        this.ctx.drawImage(this.imageRandom, this.playerPosition.x, this.playerPosition.y - this.refDimensions , this.refDimensions, this.refDimensions)
+        this.setListeners() 
     }
 
 
