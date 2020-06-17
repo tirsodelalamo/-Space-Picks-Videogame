@@ -1,4 +1,6 @@
 const maxHeight = 300
+
+
 //-----------------------------------------------------SQUARES-------------------------------------------------------------
 
 let arrSquareObstacles = [
@@ -53,7 +55,7 @@ let arrSquareObstacles = [
 
 
 // ----------------------------------------------------TRIANGLES-----------------------------------------------------------
-// heightMAX : 650 
+
 let arrTriangleObstacles = [{posX: 350, posY: maxHeight - 50}, //1
     {posX: 535, posY: maxHeight - 50},   {posX: 560, posY: maxHeight - 50}, //2
     {posX: 710, posY: maxHeight - 50},   {posX: 735, posY: maxHeight - 50}, //3
@@ -71,7 +73,7 @@ let arrTriangleObstacles = [{posX: 350, posY: maxHeight - 50}, //1
     {posX: 3875, posY: maxHeight - 75}, //3.2
     {posX: 4650, posY: maxHeight - 200}, {posX: 4675, posY: maxHeight - 200}, // 8 PLATAFORMA CON PINCHOS
     {posX: 4900, posY: maxHeight - 50},  {posX: 4925, posY: maxHeight - 50}, {posX: 4950, posY: maxHeight - 50},// 10 pinchos en el suelo
-    {posX: 5200, posY: maxHeight - 75}, // 11 pinchos plataforma
+    {posX: 5200, posY: maxHeight - 75}, // 11 pinchos plataforma //ULTIMO PINCHO
 
 
 ]

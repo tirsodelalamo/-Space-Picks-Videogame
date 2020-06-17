@@ -63,11 +63,6 @@ class Triangle extends Obstacles {
 
         this.moveTriangle()
 
-            this.ctx.lineWidth = 1
-            this.ctx.strokeStyle = 'black'
-            this.ctx.stroke()
-
-
             this.ctx.fillStyle = '#666666' 
 
 
@@ -78,6 +73,11 @@ class Triangle extends Obstacles {
             this.ctx.fill()
 
             this.ctx.closePath();
+
+            this.ctx.lineWidth = 1
+            this.ctx.strokeStyle = 'black'
+            this.ctx.stroke()
+
 
     }
 

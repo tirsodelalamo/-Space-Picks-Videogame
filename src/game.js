@@ -331,22 +331,6 @@ const Game = {
 
 
 //------------------------------------------------------------Hasta aquí colisiones-------------------------------------------
-
-    gameOver() {
-
-        this.music.levelSound.pause()
-        const canvas = document.querySelector('canvas')
-        canvas.style.display = 'none'
-        const gameOverScreen = document.querySelector('.gameOver')
-        gameOverScreen.style.display = 'block'
-        document.addEventListener('keydown', e =>{
-            if (e.keyCode == 82){
-                location.reload()  
-            }
-        })
-        return true
-    },
-
     victory() {
 
         if (this.obstacles.squares.length == 3){
@@ -364,6 +348,24 @@ const Game = {
             })
         }
     },
+
+
+    gameOver() {
+
+        this.music.levelSound.pause()
+        const canvas = document.querySelector('canvas')
+        canvas.style.display = 'none'
+        const gameOverScreen = document.querySelector('.gameOver')
+        gameOverScreen.style.display = 'block'
+        document.addEventListener('keydown', e =>{
+            if (e.keyCode == 82){
+                location.reload()  
+            }
+        })
+        return true
+    },
+
+
 
     endGame (){
         clearInterval(this.interval)
