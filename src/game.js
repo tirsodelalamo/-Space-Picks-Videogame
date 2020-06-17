@@ -231,27 +231,7 @@ const Game = {
          }
  
      },
-    isSquareLateralNegativeColliding(square) {
-        // ESTOY EN EL EJE X CORRECTO
-        if (!this.player.isColliding && 
-            this.player.playerPosition.x + this.refDimensions >= square.obstaclesPosition.posX -1 &&
-            this.player.playerPosition.x + this.refDimensions <= square.obstaclesPosition.posX + 1 && //los cuadrados tocan por los vertices de abajo)
-            
-            ((this.player.playerPosition.y >= square.obstaclesPosition.posY - this.refDimensions &&
-            this.player.playerPosition.y  <= square.obstaclesPosition.posY)
-            ||
-            (this.player.playerPosition.y - this.refDimensions >= square.obstaclesPosition.posY &&
-            this.player.playerPosition.y - this.refDimensions <= square.obstaclesPosition.posY - this.refDimensions)
-                ))
-             {
-            
-            return true
 
-        } else {
-            return false 
-        }
-
-    },
 
     isSquareDownNegativeColliding(square){
 
@@ -299,7 +279,29 @@ const Game = {
 
     },
 
+    isSquareLateralNegativeColliding(square) {
+        // ESTOY EN EL EJE X CORRECTO
+        if (!this.player.isColliding && 
+            this.player.playerPosition.x + this.refDimensions >= square.obstaclesPosition.posX -1 &&
+            this.player.playerPosition.x + this.refDimensions <= square.obstaclesPosition.posX + 1 && //los cuadrados tocan por los vertices de abajo)
+            
+            ((this.player.playerPosition.y >= square.obstaclesPosition.posY - this.refDimensions &&
+            this.player.playerPosition.y  <= square.obstaclesPosition.posY)
+            ||
+            (this.player.playerPosition.y - this.refDimensions >= square.obstaclesPosition.posY &&
+            this.player.playerPosition.y - this.refDimensions <= square.obstaclesPosition.posY - this.refDimensions)
+                ))
+             {
+            
+            return true
 
+        } else {
+            return false 
+        }
+
+    },
+
+    
     isTriangleLateralNegativeColliding(triangle){ //POSIBLES RETOQUES DE ANCHO
         
         if (this.player.playerPosition.x + this.refDimensions >= triangle.obstaclesPosition.posX +11.5 -2 &&

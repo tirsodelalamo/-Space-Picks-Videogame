@@ -11,6 +11,7 @@ class Obstacles {
             posX: posX,
             posY: posY
         }
+        
     }
 
 
