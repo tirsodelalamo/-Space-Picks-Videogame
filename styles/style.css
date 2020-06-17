@@ -14,7 +14,7 @@ canvas {
 
 
 body {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Amatic SC', cursive;
     text-align: center;
     background-color: black;
     color: white;
@@ -24,33 +24,53 @@ body {
 h1 {
     padding-top: 17%;
     padding-bottom: 20px;
+    font-size: 7em;
+}
+
+.initialScreen p{
+    font-size: 2em;
 }
 
 
-
 .gameOver{
-
+    margin-top: 50px;
     padding: 15%;
-    margin-top: 7%;
+
     color: white;
     display: none;
 
     text-align: center;
 }
 
+.gameOver h2 {
+    font-size: 6em;
+    margin-bottom: 20px;
+}
+
 .gameOver p {
-    margin-top: 20px;
+
+    font-size: 2em;
 
 }
 
 
 .victory{
+    margin-top: 50px;
     padding: 15%;
-    margin-top: 10%;
     color: white;
     display: none;
-
     text-align: center;
+}
+
+.victory h2 {
+    font-size: 6em;
+    margin-bottom: 20px;
+}
+
+.victory p {
+
+    font-size: 2em;
+
 }
 
 

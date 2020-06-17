@@ -118,12 +118,6 @@ const Game = {
         this.obstacles.picks = this.obstacles.picks.filter(elem => elem.obstaclesPosition.posX >= -this.refDimensions * 2)
       
     },
-    // playSound(){
-    //     const audio = new Audio(src="/sound/levelSoundComplete50sec.mp3") // NO NECESARIO
-    //     audio.loop = false
-    //     audio.play()
-
-    // },
 
 
 //---------------------------------------COLLISIONS---------------------------------------------------------------------------------
@@ -215,7 +209,28 @@ const Game = {
 
     },
 
+    
+    isPickNegativeColliding(picks) {
+        // ESTOY EN EL EJE Y CORRECTO
+         if (this.player.playerPosition.y <= picks.obstaclesPosition.posY - this.refDimensions/2 + 3 && 
+             this.player.playerPosition.y >= picks.obstaclesPosition.posY - this.refDimensions/2 - 3 &&
+             
+             //MI VERTICE ABAJO/IZQ ESTA TOCANDO EL CUADRADO
+             ((this.player.playerPosition.x >= picks.obstaclesPosition.posX &&
+                 this.player.playerPosition.x <= picks.obstaclesPosition.posX + this.refDimensions * 2)
+             ||
+             //MI VERTICE ABAJO/DER ESTA TOCANDO EL CUADRADO
+             (this.player.playerPosition.x + this.refDimensions >= picks.obstaclesPosition.posX + this.refDimensions * 2 &&
+             this.player.playerPosition.x + this.refDimensions <= picks.obstaclesPosition.posX + this.refDimensions * 2) 
+             )) {
 
+             return true
+ 
+         } else {
+             return false
+         }
+ 
+     },
     isSquareLateralNegativeColliding(square) {
         // ESTOY EN EL EJE X CORRECTO
         if (!this.player.isColliding && 
@@ -306,28 +321,7 @@ const Game = {
 
     },
 
-    
-    isPickNegativeColliding(picks) {
-        // ESTOY EN EL EJE Y CORRECTO
-         if (this.player.playerPosition.y <= picks.obstaclesPosition.posY - this.refDimensions/2 + 3 && 
-             this.player.playerPosition.y >= picks.obstaclesPosition.posY - this.refDimensions/2 - 3 &&
-             
-             //MI VERTICE ABAJO/IZQ ESTA TOCANDO EL CUADRADO
-             ((this.player.playerPosition.x >= picks.obstaclesPosition.posX &&
-                 this.player.playerPosition.x <= picks.obstaclesPosition.posX + this.refDimensions * 2)
-             ||
-             //MI VERTICE ABAJO/DER ESTA TOCANDO EL CUADRADO
-             (this.player.playerPosition.x + this.refDimensions >= picks.obstaclesPosition.posX + this.refDimensions * 2 &&
-             this.player.playerPosition.x + this.refDimensions <= picks.obstaclesPosition.posX + this.refDimensions * 2) 
-             )) {
 
-             return true
- 
-         } else {
-             return false
-         }
- 
-     },
 
 
 //------------------------------------------------------------Hasta aquí colisiones-------------------------------------------
