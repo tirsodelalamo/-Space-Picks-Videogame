@@ -7,32 +7,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
 </head>
-<body>
+<body class='bg'>
+
+    <div>
+        <h1>GEO-PICKS</h1>
+            <p> Get frustrated with us! </p>
+            <p>Press ENTER to start</p>
+    </div>
+    
+    <div class = 'gameOver'>
+        GAME OVER
+        <p>Wanna retry?</p>
+        <p>Press R</p>
+    </div> 
+    
+    
+    <div class='victory'>
+        YOU WIN!
+        <p>...this time...</p>
+        <p>Wanna retry? Press R</p>
+    </div>
+    
+    <div class="star-field">
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+
+
+    <div class='bg canvas'><canvas id='geometrydash'></canvas></div>
+    
+    
 
 
 
-
-<div>
-    <h1>GEO-PICKS</h1>
-        <p> Get frustrated with us! </p>
-        <p>Press ENTER to start</p>
-</div>
-
-<div class = 'gameOver'>
-    GAME OVER
-    <p>Wanna retry?</p>
-    <p>Press R</p>
-</div> 
-
-
-<div class='victory'>
-    YOU WIN!
-    <p>...this time...</p>
-    <p>Wanna retry? Press R</p>
-</div>
-
-
-<canvas id='geometrydash'></canvas>
 
 <script src="src/explotion.js"></script>
 <script src="src/arrObstacles.js"></script>
