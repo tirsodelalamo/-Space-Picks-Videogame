@@ -135,55 +135,56 @@ const Game = {
             this.player.playerPosition.y = this.player.currentBasePosition
             this.player.isJumping = false
         }
-    //----------------------------positive square collisions-----------------
-        if(this.obstacles.squares.some(square => this.isSquarePositiveColliding(square))){
-            this.player.isColliding = true
-            this.player.isJumping = false
-        } else {
-            this.player.isColliding = false
-        }
-    //----------------------------negative square lateral collisions-----------------
 
-        if(this.obstacles.squares.some(square => this.isSquareLateralNegativeColliding(square))){
+    //----------------------------upColliding (picks and triangles)----------------------------------
+
+
+        if(this.obstacles.triangles.some(triangles => this.isUpColliding(triangles))){
             this.endGame()
         }
-        
-    //----------------------------negative square down collisions-----------------
 
-        if(this.obstacles.squares.some(square => this.isSquareDownNegativeColliding(square))){
-            this.endGame()
-        }
-    //----------------------------triangle Up collisions------------------------
-
-        if(this.obstacles.triangles.some(triangles => this.isTriangleUpNegativeColliding(triangles))){
-            this.endGame()
-        }
-    
-    //----------------------------triangle lateral collisions------------------------
-
-        if(this.obstacles.triangles.some(triangles => this.isTriangleLateralNegativeColliding(triangles))){
+        if(this.obstacles.picks.some(picks => this.isUpColliding(picks))){
             this.endGame()
         }
 
 
-    //----------------------------pikes collisions---------------------------
+    //----------------------------Lateral Collisions(square and triangles)-----------------
 
-        if(this.obstacles.picks.some(picks => this.isPickNegativeColliding(picks))){
+        if(this.obstacles.triangles.some(triangles => this.isLateralColliding(triangles))){
             this.endGame()
         }
 
-    },
-
-
-    isGroundColliding(){
-        if (this.player.playerPosition.y >= this.canvasSize.h - this.groundHeight){
-            return true
-
-        } else {
-            return false
+        if(this.obstacles.squares.some(square => this.isLateralColliding(square))){
+            this.endGame()
         }
-    },
 
+
+    //---------------------------------------ONLY SQUARE (change posY player top // and // gameOver bottom) ----------------------------------------
+
+
+            //----------------------------positive square collisions (modifica posY player) -----------------
+                if(this.obstacles.squares.some(square => this.isSquarePositiveColliding(square))){
+                    this.player.isColliding = true
+                    this.player.isJumping = false
+                } else {
+                    this.player.isColliding = false
+                }
+
+
+            //----------------------------negative square down collisions-----------------
+
+            if(this.obstacles.squares.some(square => this.isSquareDownNegativeColliding(square))){
+                this.endGame()
+            }
+
+
+  },
+
+
+
+
+
+    //-----------------Colision del cuadrado, modificamos la posY del jugador para subirse al obstaculo----------------------
 
     isSquarePositiveColliding(square) {
        // ESTOY EN EL EJE Y CORRECTO
@@ -209,29 +210,7 @@ const Game = {
 
     },
 
-    
-    isPickNegativeColliding(picks) {
-        // ESTOY EN EL EJE Y CORRECTO
-         if (this.player.playerPosition.y <= picks.obstaclesPosition.posY - this.refDimensions/2 + 3 && 
-             this.player.playerPosition.y >= picks.obstaclesPosition.posY - this.refDimensions/2 - 3 &&
-             
-             //MI VERTICE ABAJO/IZQ ESTA TOCANDO EL CUADRADO
-             ((this.player.playerPosition.x >= picks.obstaclesPosition.posX &&
-                 this.player.playerPosition.x <= picks.obstaclesPosition.posX + this.refDimensions * 2)
-             ||
-             //MI VERTICE ABAJO/DER ESTA TOCANDO EL CUADRADO
-             (this.player.playerPosition.x + this.refDimensions >= picks.obstaclesPosition.posX + this.refDimensions * 2 &&
-             this.player.playerPosition.x + this.refDimensions <= picks.obstaclesPosition.posX + this.refDimensions * 2) 
-             )) {
-
-             return true
- 
-         } else {
-             return false
-         }
- 
-     },
-
+   //-----------------Colision del cuadrado por debajo----------------------------------
 
     isSquareDownNegativeColliding(square){
 
@@ -256,74 +235,67 @@ const Game = {
     },
 
 
-    isTriangleUpNegativeColliding(triangle){ //POSIBLES RETOQUES DE ANCHO
+    //---------------------------------------------------------------------------------------------
 
-        if (this.player.playerPosition.y <= triangle.obstaclesPosition.posY - 20 + 3 && 
-            this.player.playerPosition.y >= triangle.obstaclesPosition.posY - 20 - 3 &&
+
+    isUpColliding(obstacles){
+
+        if(obstacles instanceof Picks|| obstacles instanceof Triangle){
+
+            if (this.player.playerPosition.y <= obstacles.obstaclesPosition.posY - obstacles.obstacleDimensions.h + 3 && 
+                this.player.playerPosition.y >= obstacles.obstaclesPosition.posY - obstacles.obstacleDimensions.h - 3 &&
+                
+                //MI VERTICE ABAJO/IZQ ESTA TOCANDO EL CUADRADO
+                ((this.player.playerPosition.x >= obstacles.obstaclesPosition.posX &&
+                    this.player.playerPosition.x <= obstacles.obstaclesPosition.posX + obstacles.obstacleDimensions.w)
+                ||
+                //MI VERTICE ABAJO/DER ESTA TOCANDO EL CUADRADO
+                (this.player.playerPosition.x + this.refDimensions >= obstacles.obstaclesPosition.posX + obstacles.obstacleDimensions.w &&
+                this.player.playerPosition.x + this.refDimensions <= obstacles.obstaclesPosition.posX + obstacles.obstacleDimensions.w) 
+                )) {
+                
+                    console.log('colisiono por arriba')
+                return true
+    
+            } else {
+                return false
+            }
+
+        }
+ 
+    },
+
+    isLateralColliding(obstacles){
+        if(obstacles instanceof Triangle|| (obstacles instanceof Square && !this.player.isColliding) ){
             
-            //MI VERTICE ABAJO/IZQ ESTA TOCANDO EL CUADRADO
-            ((this.player.playerPosition.x >= triangle.obstaclesPosition.posX + 11.5 &&
-                this.player.playerPosition.x <= triangle.obstaclesPosition.posX + 13.5)
-            ||
-            //MI VERTICE ABAJO/DER ESTA TOCANDO EL CUADRADO
-            (this.player.playerPosition.x + this.refDimensions >= triangle.obstaclesPosition.posX + 11.5 &&
-            this.player.playerPosition.x + this.refDimensions <= triangle.obstaclesPosition.posX + 13.5) 
-            )) {
+            if (this.player.playerPosition.x + this.refDimensions >= obstacles.obstaclesPosition.posX -1 &&
+                this.player.playerPosition.x + this.refDimensions <= obstacles.obstaclesPosition.posX + 1 && //los cuadrados tocan por los vertices de abajo)
+                
+                ((this.player.playerPosition.y >= obstacles.obstaclesPosition.posY - obstacles.obstacleDimensions.h &&
+                this.player.playerPosition.y  <= obstacles.obstaclesPosition.posY)
+                ||
+                (this.player.playerPosition.y - this.refDimensions >= obstacles.obstaclesPosition.posY &&
+                this.player.playerPosition.y - this.refDimensions <= obstacles.obstaclesPosition.posY - obstacles.obstacleDimensions.h)
+                    ))
+                 {
+                    console.log('COLAPSO MENTAL...digo.. LATERAL! :D')
+                return true
+    
+            } else {
+                return false 
+            }
+        }
+    },
 
+
+    isGroundColliding(){
+        if (this.player.playerPosition.y >= this.canvasSize.h - this.groundHeight){
             return true
 
         } else {
-
             return false
         }
-
     },
-
-    isSquareLateralNegativeColliding(square) {
-        // ESTOY EN EL EJE X CORRECTO
-        if (!this.player.isColliding && 
-            this.player.playerPosition.x + this.refDimensions >= square.obstaclesPosition.posX -1 &&
-            this.player.playerPosition.x + this.refDimensions <= square.obstaclesPosition.posX + 1 && //los cuadrados tocan por los vertices de abajo)
-            
-            ((this.player.playerPosition.y >= square.obstaclesPosition.posY - this.refDimensions &&
-            this.player.playerPosition.y  <= square.obstaclesPosition.posY)
-            ||
-            (this.player.playerPosition.y - this.refDimensions >= square.obstaclesPosition.posY &&
-            this.player.playerPosition.y - this.refDimensions <= square.obstaclesPosition.posY - this.refDimensions)
-                ))
-             {
-            
-            return true
-
-        } else {
-            return false 
-        }
-
-    },
-
-    
-    isTriangleLateralNegativeColliding(triangle){ //POSIBLES RETOQUES DE ANCHO
-        
-        if (this.player.playerPosition.x + this.refDimensions >= triangle.obstaclesPosition.posX +11.5 -2 &&
-            this.player.playerPosition.x + this.refDimensions <= triangle.obstaclesPosition.posX + 13.5 + 2 && //los cuadrados tocan por los vertices de abajo)
-            
-            ((this.player.playerPosition.y >= triangle.obstaclesPosition.posY - this.refDimensions &&
-            this.player.playerPosition.y  <= triangle.obstaclesPosition.posY)
-            ||
-            (this.player.playerPosition.y - this.refDimensions >= triangle.obstaclesPosition.posY &&
-            this.player.playerPosition.y - this.refDimensions <= triangle.obstaclesPosition.posY - this.refDimensions)
-                ))
-             {
-            
-            return true
-
-        } else {
-            return false 
-        }
-
-    },
-
-
 
 
 //------------------------------------------------------------Hasta aquí colisiones-------------------------------------------

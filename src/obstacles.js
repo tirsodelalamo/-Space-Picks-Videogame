@@ -11,7 +11,7 @@ class Obstacles {
             posX: posX,
             posY: posY
         }
-        
+
     }
 
 
@@ -24,6 +24,11 @@ class Square extends Obstacles {
     constructor(ctx, canvasSize, groundHeight, refDimensions, posX, posY, velX){
 
         super(ctx, canvasSize, groundHeight, refDimensions, posX, posY, velX)
+
+         this.obstacleDimensions = { // PROPIEDADES PARA COLISIONES PROPIOS DE LA CLASE
+             w: this.refDimensions,
+             h: this.refDimensions
+         }
 
     }
 
@@ -48,15 +53,19 @@ class Square extends Obstacles {
         this.obstaclesPosition.posX -= this.velX
     }
 
-
-
 }
+
 
 class Triangle extends Obstacles {
 
     constructor (ctx, canvasSize, groundHeight, refDimensions, posX, posY, velX){
 
         super(ctx, canvasSize, groundHeight, refDimensions, posX, posY, velX)
+
+        this.obstacleDimensions = { // PROPIEDADES PARA COLISIONES PROPIOS DE LA CLASE
+            w: 10,
+            h: 17
+        }
 
     }
 
@@ -86,7 +95,6 @@ class Triangle extends Obstacles {
         this.obstaclesPosition.posX -= this.velX
     }
 
-
 }
 
 
@@ -96,6 +104,11 @@ class Picks extends Obstacles {
     constructor(ctx, canvasSize, groundHeight, refDimensions, posX, posY, velX){
 
         super(ctx, canvasSize, groundHeight, refDimensions, posX, posY, velX)
+
+        this.obstacleDimensions = { // PROPIEDADES PARA COLISIONES PROPIOS DE LA CLASE
+            w: this.refDimensions * 2,
+            h: this.refDimensions / 2
+        }
 
     }
 
@@ -112,8 +125,6 @@ class Picks extends Obstacles {
     movePicks () {
         this.obstaclesPosition.posX -= this.velX
     }
-
-
 
 }
 
