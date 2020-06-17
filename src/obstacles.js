@@ -109,15 +109,14 @@ class Picks extends Obstacles {
             w: this.refDimensions * 2,
             h: this.refDimensions / 2
         }
-
+        this.image = new Image(),
+        this.image.src = 'images/NicePng_spike-spiegel-png_2287658.png'
     }
 
     drawPicks(){
         this.movePicks()
- 
-        this.ctx.fillStyle = '#white'
 
-            this.ctx.fillRect(this.obstaclesPosition.posX, this.obstaclesPosition.posY, this.refDimensions * 2, this.refDimensions / 2 - this.refDimensions)
+        this.ctx.drawImage(this.image, this.obstaclesPosition.posX, this.obstaclesPosition.posY, this.refDimensions * 2, this.refDimensions / 2 - this.refDimensions)
 
         
     }
