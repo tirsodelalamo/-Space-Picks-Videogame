@@ -21,7 +21,8 @@ const Game = {
     music: {
         levelSound: new Audio('sound/levelSoundComplete50sec.mp3'),
         crashSound: new Audio('sound/explode_11.mp3'),
-        jumpSound: new Audio('sound/350906__cabled-mess__jump-c-04.wav') 
+        jumpSound: new Audio('sound/350906__cabled-mess__jump-c-04.wav'),
+        victorySound: new Audio('sound/Final Fantasy VI - Victory Fanfare (mp3cut.net)(1).mp3')
     },
 
 
@@ -348,8 +349,10 @@ const Game = {
 
     victory() {
 
-        if ( this.obstacles.squares.length == 0){
+        if (this.obstacles.squares.length == 3){
             this.music.levelSound.pause()
+            this.music.victorySound.play()
+            this.music.victorySound.volume = 0.1
             const canvas = document.querySelector('canvas')
             canvas.style.display = 'none'
             const victoryScreen = document.querySelector('.victory')
