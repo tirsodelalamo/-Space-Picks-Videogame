@@ -41,7 +41,7 @@ class Square extends Obstacles {
         this.ctx.rect(this.obstaclesPosition.posX, this.obstaclesPosition.posY - this.refDimensions, this.refDimensions, this.refDimensions)
         this.ctx.stroke() //FIN BORDE CUADRADOS
 
-        this.ctx.fillStyle = '#666666'
+        this.ctx.fillStyle = 'white'
         this.ctx.lineWidth = 1
         this.ctx.strokeStyle = 'black'
         this.ctx.stroke()
@@ -73,7 +73,7 @@ class Triangle extends Obstacles {
 
         this.moveTriangle()
 
-            this.ctx.fillStyle = '#666666' 
+            this.ctx.fillStyle = 'white' 
 
 
             this.ctx.beginPath();
@@ -115,7 +115,7 @@ class Picks extends Obstacles {
     drawPicks(){
         this.movePicks()
  
-        this.ctx.fillStyle = '#00c5f0'
+        this.ctx.fillStyle = '#white'
 
             this.ctx.fillRect(this.obstaclesPosition.posX, this.obstaclesPosition.posY, this.refDimensions * 2, this.refDimensions / 2 - this.refDimensions)
 
