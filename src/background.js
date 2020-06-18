@@ -6,7 +6,7 @@ class Background {
         this.canvasSize = canvasSize
 
         this.image = new Image(),
-        this.imagesArr = ['images/122-seamless-space.jpg'/*'images/penguin.jpg', 'images/meteor.jpeg', 'images/planets.jpeg', 'images/stars.jpg', 'images/blueSky.jpeg''images/wavesStars.jpg','images/cactus.jpg'*/]
+        this.imagesArr = ['images/122-seamless-space.jpg', 'images/penguin.jpg', 'images/spaceLight.jpg']
         this.image.src = this.imagesArr[parseInt(Math.random()*this.imagesArr.length)]
 
 
