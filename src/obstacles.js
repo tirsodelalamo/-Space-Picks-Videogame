@@ -33,7 +33,7 @@ class Square extends Obstacles {
          this.imageSquares.src = 'images/square.png'
 
     }
-// azul claro C4D4F3 A2BDF1
+
     drawSquares(){
         this.moveSquare()
 
@@ -49,7 +49,7 @@ class Square extends Obstacles {
         this.ctx.stroke()
         this.ctx.fillRect(this.obstaclesPosition.posX, this.obstaclesPosition.posY - this.refDimensions, this.refDimensions, this.refDimensions)
 
-        //this.ctx.drawImage(this.imageSquares, this.obstaclesPosition.posX, this.obstaclesPosition.posY - this.refDimensions, this.refDimensions , this.refDimensions)
+        
         
     }
 

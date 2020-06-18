@@ -13,7 +13,7 @@ class Background {
 
         this.vel = {
             ground : 2,
-            background: 0.15,
+            background: 0.4,
         },
         
         this.groundHeight = groundHeight,
@@ -41,7 +41,6 @@ class Background {
         this.ctx.drawImage(this.image, this.backgroundPosition.x + this.canvasSize.w/1.5, this.backgroundPosition.y, this.canvasSize.w/1.5 , this.canvasSize.h)
         this.ctx.drawImage(this.image, this.backgroundPosition.x + this.canvasSize.w/1.5+ this.canvasSize.w/1.5,this.backgroundPosition.y, this.canvasSize.w/1.5 , this.canvasSize.h)
 
-
     }
 
     moveBackground() {
@@ -58,9 +57,9 @@ class Background {
         this.moveGround()
 
 
-        this.ctx.drawImage(this.image, this.groundPosition.x ,  this.canvasSize.h - this.groundHeight , this.canvasSize.w/1.5, this.canvasSize.h)
-        this.ctx.drawImage(this.image, this.groundPosition.x + this.canvasSize.w/1.5, this.canvasSize.h - this.groundHeight ,  this.canvasSize.w/1.5 , this.canvasSize.h)
-        this.ctx.drawImage(this.image, this.groundPosition.x + this.canvasSize.w /1.5+ this.canvasSize.w/1.5, this.canvasSize.h - this.groundHeight , this.canvasSize.w/1.5 ,   this.canvasSize.h)
+        this.ctx.drawImage(this.image, this.groundPosition.x ,  this.canvasSize.h - this.groundHeight , this.canvasSize.w, this.canvasSize.h)
+        this.ctx.drawImage(this.image, this.groundPosition.x + this.canvasSize.w, this.canvasSize.h - this.groundHeight ,  this.canvasSize.w, this.canvasSize.h)
+        this.ctx.drawImage(this.image, this.groundPosition.x + this.canvasSize.w + this.canvasSize.w, this.canvasSize.h - this.groundHeight , this.canvasSize.w ,   this.canvasSize.h)
 
         this.ctx.fillStyle = '#DCD0EA'
         this.ctx.fillRect(0, this.canvasSize.h - this.groundHeight, this.canvasSize.w, 2)

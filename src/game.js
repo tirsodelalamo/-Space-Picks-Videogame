@@ -1,7 +1,7 @@
 
 const Game = {
 
-    title: 'Geometry Dash',
+    title: 'Space-Picks',
     description: 'Imposible game!',
     authors: 'Tirso del Álamo y Elena Sánchez',
     license: null,
@@ -190,7 +190,7 @@ const Game = {
   },
 
 
-    //-----------------Colision del cuadrado, modificamos la posY del jugador para subirse al obstaculo----------------------
+    //--------------------Square collisions, modifying the posY of player----------------------
 
     isSquarePositiveColliding(square) {
        // ESTOY EN EL EJE Y CORRECTO
@@ -260,7 +260,7 @@ const Game = {
                 this.player.playerPosition.x + this.refDimensions <= obstacles.obstaclesPosition.posX + obstacles.obstacleDimensions.w) 
                 )) {
                 
-                    console.log('colisiono por arriba')
+
                 return true
     
             } else {
@@ -284,7 +284,7 @@ const Game = {
                 this.player.playerPosition.y - this.refDimensions <= obstacles.obstaclesPosition.posY - obstacles.obstacleDimensions.h)
                     ))
                  {
-                    console.log(`COLAPSO MENTAL...digo.. LATERAL! :D`)
+
                 return true
     
             } else {
@@ -304,7 +304,7 @@ const Game = {
     },
 
 
-//------------------------------------------------------------Hasta aquí colisiones-------------------------------------------
+//------------------------------------------------------------End of Collisions-------------------------------------------
     victory() {
 
         if (this.obstacles.squares.length == 3){
