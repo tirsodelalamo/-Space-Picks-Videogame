@@ -29,23 +29,27 @@ class Square extends Obstacles {
              w: this.refDimensions,
              h: this.refDimensions
          }
+         this.imageSquares = new Image(),
+         this.imageSquares.src = 'images/square.png'
 
     }
-
+// azul claro C4D4F3 A2BDF1
     drawSquares(){
         this.moveSquare()
 
         this.ctx.beginPath()
         this.ctx.lineWidth = "1"
-        this.ctx.strokeStyle = "black"
+        this.ctx.strokeStyle = "white"
         this.ctx.rect(this.obstaclesPosition.posX, this.obstaclesPosition.posY - this.refDimensions, this.refDimensions, this.refDimensions)
         this.ctx.stroke() //FIN BORDE CUADRADOS
 
-        this.ctx.fillStyle = 'white'
+        this.ctx.fillStyle = '#C4D4F3'
         this.ctx.lineWidth = 1
-        this.ctx.strokeStyle = 'black'
+        this.ctx.strokeStyle = 'white'
         this.ctx.stroke()
         this.ctx.fillRect(this.obstaclesPosition.posX, this.obstaclesPosition.posY - this.refDimensions, this.refDimensions, this.refDimensions)
+
+        //this.ctx.drawImage(this.imageSquares, this.obstaclesPosition.posX, this.obstaclesPosition.posY - this.refDimensions, this.refDimensions , this.refDimensions)
         
     }
 
@@ -63,9 +67,11 @@ class Triangle extends Obstacles {
         super(ctx, canvasSize, groundHeight, refDimensions, posX, posY, velX)
 
         this.obstacleDimensions = { // PROPIEDADES PARA COLISIONES PROPIOS DE LA CLASE
-            w: 10,
+            w: 8,
             h: 17
         }
+
+
 
     }
 
@@ -73,7 +79,7 @@ class Triangle extends Obstacles {
 
         this.moveTriangle()
 
-            this.ctx.fillStyle = 'white' 
+            this.ctx.fillStyle = 'grey' 
 
 
             this.ctx.beginPath();
@@ -85,10 +91,10 @@ class Triangle extends Obstacles {
             this.ctx.closePath();
 
             this.ctx.lineWidth = 1
-            this.ctx.strokeStyle = 'black'
+            this.ctx.strokeStyle = 'white '
             this.ctx.stroke()
 
-
+          
     }
 
     moveTriangle(){

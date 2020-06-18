@@ -6,7 +6,7 @@ class Background {
         this.canvasSize = canvasSize
 
         this.image = new Image(),
-        this.imagesArr = ['images/stars.jpg'/*'images/penguin.jpg', 'images/meteor.jpeg', 'images/planets.jpeg', 'images/stars.jpg', 'images/blueSky.jpeg''images/wavesStars.jpg','images/cactus.jpg'*/]
+        this.imagesArr = ['images/122-seamless-space.jpg'/*'images/penguin.jpg', 'images/meteor.jpeg', 'images/planets.jpeg', 'images/stars.jpg', 'images/blueSky.jpeg''images/wavesStars.jpg','images/cactus.jpg'*/]
         this.image.src = this.imagesArr[parseInt(Math.random()*this.imagesArr.length)]
 
 
@@ -31,6 +31,8 @@ class Background {
 
     }
 
+    //-----------------------------------Background Methods-----------------------------
+
     drawBackground() {
 
         this.moveBackground()
@@ -49,6 +51,8 @@ class Background {
         this.backgroundPosition.x -= this.vel.background
     }
 
+    //-----------------------------------Ground Methods-----------------------------
+
     drawGround(){
 
         this.moveGround()
@@ -58,7 +62,7 @@ class Background {
         this.ctx.drawImage(this.image, this.groundPosition.x + this.canvasSize.w/1.5, this.canvasSize.h - this.groundHeight ,  this.canvasSize.w/1.5 , this.canvasSize.h)
         this.ctx.drawImage(this.image, this.groundPosition.x + this.canvasSize.w /1.5+ this.canvasSize.w/1.5, this.canvasSize.h - this.groundHeight , this.canvasSize.w/1.5 ,   this.canvasSize.h)
 
-        this.ctx.fillStyle = 'black'
+        this.ctx.fillStyle = '#DCD0EA'
         this.ctx.fillRect(0, this.canvasSize.h - this.groundHeight, this.canvasSize.w, 2)
         
     }

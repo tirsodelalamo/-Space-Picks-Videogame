@@ -1,4 +1,4 @@
-const maxHeight = 300
+const maxHeight = 350
 
 
 //-----------------------------------------------------SQUARES-------------------------------------------------------------
@@ -21,7 +21,7 @@ let arrSquareObstacles = [
     {posX: 3075, posY: maxHeight - 200}, {posX: 3100, posY: maxHeight - 200}, {posX: 3125, posY: maxHeight - 200}, {posX: 3150, posY: maxHeight - 200}, {posX: 3175, posY: maxHeight - 200},  {posX: 3200, posY: maxHeight - 200}, //21.1
     {posX: 3225, posY: maxHeight - 200}, {posX: 3250, posY: maxHeight - 200}, {posX: 3275, posY: maxHeight - 200},
 
-// ------------------------------------------------------SECOND PART----------------------------------
+// ------------------------------------------------------Second Part----------------------------------
 
     {posX: 3325, posY: maxHeight - 150}, {posX: 3375, posY: maxHeight - 100}, // 1   BAJADA
     {posX: 3425, posY: maxHeight - 75},  {posX: 3450, posY: maxHeight - 75},  {posX: 3475, posY: maxHeight - 75},  {posX: 3500, posY: maxHeight - 75}, {posX: 3525, posY: maxHeight - 75},  {posX: 3550, posY: maxHeight - 75}, //2
@@ -67,7 +67,7 @@ let arrTriangleObstacles = [{posX: 350, posY: maxHeight - 50}, //1
     {posX: 2575, posY: maxHeight - 100}, //19
   
 
-    // ------------------------------------------------------SECOND PART----------------------------------
+    // ------------------------------------------------------Second Part----------------------------------
 
     {posX: 3500, posY: maxHeight - 100}, // 2
     {posX: 3875, posY: maxHeight - 75}, //3.2
@@ -88,7 +88,7 @@ let arrPicksObstacles = [{posX: 785, posY: maxHeight - 50},//5
     {posX: 1475, posY: maxHeight - 50}, //11
 
 
-    // ------------------------------------------------------SECOND PART----------------------------------
+    // ------------------------------------------------------Third Part----------------------------------
    
     {posX: 3700, posY: maxHeight - 50},
     {posX: 5275, posY: maxHeight - 50}, // 12 pinchos subida
@@ -98,7 +98,10 @@ let arrPicksObstacles = [{posX: 785, posY: maxHeight - 50},//5
     {posX: 5575, posY: maxHeight - 50}, // 12 pinchos subida
     {posX: 5650, posY: maxHeight - 50}, //12 pinchos intermedio
 
-    // -----------------------------------------------------THE FLOOR IS LAVA--------------------------
+
+
+
+    // -----------------------------------------------------THE FLOOR IS LAVA (SPikes floor!)--------------------------
 
     {posX: 1650, posY: maxHeight - 50}, {posX: 1700, posY: maxHeight - 50}, {posX: 1750, posY: maxHeight - 50}, {posX: 1800, posY: maxHeight - 50},  {posX: 1850, posY: maxHeight - 50},
     {posX: 1900, posY: maxHeight - 50}, {posX: 1950, posY: maxHeight - 50}, {posX: 2000, posY: maxHeight - 50}, {posX: 2050, posY: maxHeight - 50},  {posX: 2100, posY: maxHeight - 50},

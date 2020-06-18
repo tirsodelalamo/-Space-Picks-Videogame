@@ -23,8 +23,6 @@ class Player {
 
     drawPlayer(){
         this.move()
-        // this.ctx.fillStyle = '#c10303'
-        // this.ctx.fillRect(this.playerPosition.x, this.playerPosition.y - this.refDimensions , this.refDimensions, this.refDimensions)
         this.ctx.drawImage(this.imageRandom, this.playerPosition.x, this.playerPosition.y - this.refDimensions , this.refDimensions, this.refDimensions)
         this.setListeners() 
     }
@@ -37,14 +35,12 @@ class Player {
                 if ( this.currentBasePosition == this.playerPosition.y){
                     this.jump()
                     
-                    //  console.log(`X: ${this.playerPosition.x} -- y: ${this.playerPosition.y}`) // ----------------------------------
                 }
             }
         })
     }
 
     move(){
-
         this.velY+=this.gravity
 
         if (!this.isJumping && (this.playerPosition.y >= this.canvasSize.h - this.groundHeight || this.isColliding)){
@@ -56,15 +52,10 @@ class Player {
 
     }
 
-
     jump(){
-
-        
-
         this.isJumping = true
         this.velY = this.jumpVel
         this.playerPosition.y += this.velY
-    
     }
 
 

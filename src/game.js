@@ -33,6 +33,7 @@ const Game = {
         triangles: [],
         picks: []
     },
+    score: undefined,
 
     explotionFrame : 0,
 
@@ -45,6 +46,7 @@ const Game = {
         this.createBackground()
         this.createPlayer()
         this.createObstacles()
+        this.createScore()
         this.start()
    
     },
@@ -65,7 +67,7 @@ const Game = {
     setDimensions(){
         
         this.canvasSize.w = 500
-        this.canvasSize.h = 300
+        this.canvasSize.h = 350
         this.canvasDom.setAttribute('width', this.canvasSize.w)
         this.canvasDom.setAttribute('height', this.canvasSize.h)
     },
@@ -95,6 +97,10 @@ const Game = {
 
     },
 
+    createScore() {
+        this.score = new Score(this.ctx, this.canvasSize, this.refDimensions, this.velX)
+    },
+
     draw(){
 
         this.background.drawBackground()
@@ -103,6 +109,7 @@ const Game = {
         this.obstacles.squares.forEach(elem => elem.drawSquares())
         this.obstacles.triangles.forEach(elem => elem.drawTriangles()) 
         this.obstacles.picks.forEach(elem => elem.drawPicks()) 
+        this.score.drawScore ()
 
     },
 
@@ -124,6 +131,8 @@ const Game = {
 
 
     detectCollisions(){
+
+
         //VAMOS A COMPROBAR SI ALGUN ELEMENTO ESTA COLISIONANDO
         //PARA ELLO VAMOS A USAR EN VEZ DE FOREACH, SOME
         //NUESTRO detectModifyColisionSquares DEVOLVERA AHORA TRUE/FALSE
@@ -179,9 +188,6 @@ const Game = {
 
 
   },
-
-
-
 
 
     //-----------------Colision del cuadrado, modificamos la posY del jugador para subirse al obstaculo----------------------
@@ -278,7 +284,7 @@ const Game = {
                 this.player.playerPosition.y - this.refDimensions <= obstacles.obstaclesPosition.posY - obstacles.obstacleDimensions.h)
                     ))
                  {
-                    console.log('COLAPSO MENTAL...digo.. LATERAL! :D')
+                    console.log(`COLAPSO MENTAL...digo.. LATERAL! :D`)
                 return true
     
             } else {
@@ -325,6 +331,8 @@ const Game = {
         canvas.style.display = 'none'
         const gameOverScreen = document.querySelector('.gameOver')
         gameOverScreen.style.display = 'block'
+        let percentage = document.querySelector('.percentage')
+        percentage.innerText = this.score.percentage + '%'
         document.addEventListener('keydown', e =>{
             if (e.keyCode == 82){
                 location.reload()  
