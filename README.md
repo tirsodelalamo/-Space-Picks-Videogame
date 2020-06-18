@@ -2,7 +2,7 @@
 
 A Geometry Dash based game.
 
-You can play clicking [here]() 
+You can play clicking [here](https://tirsodelalamo.github.io/-Space-Picks-Videogame/) 
 
 ## INSTRUCTIONS
 Use your spacebar and avoid getting mad!
