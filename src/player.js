@@ -19,6 +19,8 @@ class Player {
         this.imageRandom = new Image(),
         this.imagesPlayer = ['images/playerImages/batmanPurple.png', 'images/playerImages/creeperGreen.png', 'images/playerImages/pervertFacePink.png', 'images/playerImages/skullGrey.png', 'images/playerImages/spidermanRed.png', 'images/playerImages/tongueFaceYellow.png'],
         this.imageRandom.src = this.imagesPlayer[parseInt(Math.random()*this.imagesPlayer.length)]
+
+        
     }
 
     drawPlayer(){

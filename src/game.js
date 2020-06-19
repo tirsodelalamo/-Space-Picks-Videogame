@@ -24,6 +24,9 @@ const Game = {
         jumpSound: new Audio('sound/350906__cabled-mess__jump-c-04.wav'),
         victorySound: new Audio('sound/Final Fantasy VI - Victory Fanfare (mp3cut.net)(1).mp3')
     },
+    gameOn: true,
+    explotionFrame : 0,
+
 
 
     background : undefined,
@@ -34,11 +37,6 @@ const Game = {
         picks: []
     },
     score: undefined,
-
-    gameOn: true,
-
-    explotionFrame : 0,
-
 
 
 
@@ -51,7 +49,6 @@ const Game = {
         this.createObstacles()
         this.createScore()
         this.start()
-   
     },
 
     start() {
@@ -71,7 +68,6 @@ const Game = {
     },
     
     setDimensions(){
-        
         this.canvasSize.w = 500
         this.canvasSize.h = 350
         this.canvasDom.setAttribute('width', this.canvasSize.w)
@@ -80,17 +76,13 @@ const Game = {
     
     createBackground() {
         this.background = new Background(this.ctx, this.canvasSize, this.groundHeight)
-
     },
     
     createPlayer(){
-        
         this.player = new Player(this.ctx, this.canvasSize, this.groundHeight, this.refDimensions, this.keySPACE)
-
     },
 
     createObstacles(){
-
         arrSquareObstacles.forEach(elem => {
             this.obstacles.squares.push(new Square (this.ctx, this.canvasSize, this.groundHeight, this.refDimensions, elem.posX , elem.posY, this.velX))
         })
@@ -100,15 +92,14 @@ const Game = {
         arrPicksObstacles.forEach(elem => {
             this.obstacles.picks.push(new Picks (this.ctx, this.canvasSize, this.groundHeight, this.refDimensions, elem.posX, elem.posY, this.velX))
         })
-
     },
 
     createScore() {
         this.score = new Score(this.ctx, this.canvasSize, this.refDimensions, this.velX)
     },
 
-    draw(){
 
+    draw(){
         this.background.drawBackground()
         this.background.drawGround()
         this.player.drawPlayer()
@@ -116,7 +107,6 @@ const Game = {
         this.obstacles.triangles.forEach(elem => elem.drawTriangles()) 
         this.obstacles.picks.forEach(elem => elem.drawPicks()) 
         this.score.drawScore ()
-
     },
 
     clearScreen() {
