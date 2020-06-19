@@ -35,7 +35,7 @@ const Game = {
     },
     score: undefined,
 
-    gameOn: false,
+    gameOn: true,
 
     explotionFrame : 0,
 
@@ -55,7 +55,7 @@ const Game = {
     },
 
     start() {
-        if(!this.gameOn)
+        if(this.gameOn)
         this.music.levelSound.play()
         this.music.levelSound.volume = 0.1
         this.interval = setInterval(() =>{
@@ -67,7 +67,7 @@ const Game = {
             
         },1000 / this.fps)
 
-        this.gameOn = true
+        this.gameOn = false
     },
     
     setDimensions(){
@@ -323,7 +323,7 @@ const Game = {
             victoryScreen.style.display = 'block'
             document.addEventListener('keydown', e =>{
                 if (e.keyCode == 82){
-                    this.gameOn = false
+                    this.gameOn = true
                     location.reload()  
                 }
             })
@@ -342,7 +342,7 @@ const Game = {
         percentage.innerText = this.score.percentage + '%'
         document.addEventListener('keydown', e =>{
             if (e.keyCode == 82){
-                this.gameOn = false
+                this.gameOn = true
                 location.reload()  
             }
         })

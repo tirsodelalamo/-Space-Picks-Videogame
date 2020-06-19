@@ -1,7 +1,7 @@
 window.onload = () => {
     document.addEventListener('keydown', e =>{
         if (e.keyCode == 13){
-            if(!Game.gameOn){
+            if(Game.gameOn){
                 const canvas = document.querySelector('canvas')
                 const div = document.querySelector('div')
                 div.style.display = 'none'
